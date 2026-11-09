@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Warhold</title>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lilita+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#c9d3e0;--bg2:#bcc7d6;--stone1:#e9edf3;--stone2:#cfd7e3;--stoneEdge:#8f9bb0;
+  --wood1:#b97a3c;--wood2:#8d5522;--woodEdge:#4a2a0e;--text:#1d2638;--muted:#55627c;--line:#aab6ca;
+  --darkbg:linear-gradient(var(--bg2) 2px,transparent 2px) 0 0/64px 40px,linear-gradient(90deg,var(--bg2) 2px,transparent 2px) 0 0/64px 40px,var(--bg);
+  --bgfull:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMax slice'%3E%3Cdefs%3E%3ClinearGradient id='l' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff1a0'/%3E%3Cstop offset='.45' stop-color='%23ff8a1f'/%3E%3Cstop offset='1' stop-color='%23d62828'/%3E%3C/linearGradient%3E%3CradialGradient id='gl'%3E%3Cstop offset='0' stop-color='%23ffd24a' stop-opacity='.95'/%3E%3Cstop offset='.5' stop-color='%23ff7a1a' stop-opacity='.45'/%3E%3Cstop offset='1' stop-color='%23ff7a1a' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='3'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%232b1a1f' opacity='.6'%3E%3Ccircle cx='205' cy='70' r='26'/%3E%3Ccircle cx='188' cy='46' r='30'/%3E%3Ccircle cx='228' cy='36' r='34'/%3E%3Ccircle cx='205' cy='12' r='30'/%3E%3Ccircle cx='255' cy='22' r='26'/%3E%3Ccircle cx='165' cy='18' r='24'/%3E%3C/g%3E%3Cg fill='%237a4a48' opacity='.3'%3E%3Ccircle cx='214' cy='60' r='18'/%3E%3Ccircle cx='236' cy='28' r='22'/%3E%3Ccircle cx='194' cy='34' r='18'/%3E%3C/g%3E%3Ccircle cx='215' cy='100' r='52' fill='url(%23gl)'/%3E%3Cpath d='M0 300V200L40 168 80 205 120 158 170 215V300z' fill='%234a2a2a'/%3E%3Cpath d='M230 300L290 190 330 215 370 165 400 190V300z' fill='%233d2223'/%3E%3Cpath d='M105 300L188 112Q215 90 242 112L325 300z' fill='%232f1c1e'/%3E%3Cpath d='M148 300L190 126 206 120 192 300z' fill='%234d312e' opacity='.7'/%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%23ff7a1a' stroke-width='10' opacity='.55' filter='url(%23b)'%3E%3Cpath d='M215 102Q205 150 190 190Q180 230 168 275'/%3E%3Cpath d='M218 104Q236 160 246 200Q254 240 264 285'/%3E%3Cpath d='M214 106Q214 170 219 235'/%3E%3C/g%3E%3Cg stroke='url(%23l)' stroke-width='4.5'%3E%3Cpath d='M215 102Q205 150 190 190Q180 230 168 275'/%3E%3Cpath d='M218 104Q236 160 246 200Q254 240 264 285'/%3E%3Cpath d='M214 106Q214 170 219 235'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23ffd24a'%3E%3Ccircle cx='180' cy='62' r='1.6'/%3E%3Ccircle cx='252' cy='52' r='1.6'/%3E%3Ccircle cx='203' cy='30' r='1.4'/%3E%3Ccircle cx='232' cy='74' r='1.5'/%3E%3Ccircle cx='160' cy='92' r='1.3'/%3E%3Ccircle cx='268' cy='96' r='1.4'/%3E%3Ccircle cx='214' cy='8' r='1.5'/%3E%3Ccircle cx='190' cy='84' r='1.2'/%3E%3C/g%3E%3Cpath d='M0 300V220h8v-8h6v8h6v-8h6v8h8v-32h6v-10l8-13 8 13v10h6v32h6V300z' fill='%231c1114'/%3E%3Cg fill='%23ffb347'%3E%3Crect x='20' y='196' width='3' height='6'/%3E%3Crect x='38' y='200' width='3' height='6'/%3E%3Crect x='12' y='240' width='3' height='7'/%3E%3Crect x='34' y='252' width='3' height='7'/%3E%3C/g%3E%3Cpath d='M342 300V234h9v-8h6v8h6v-8h6v8h9v-42h8l10-14 10 14h6v42h8V300z' fill='%231c1114'/%3E%3Cg fill='%23ffb347'%3E%3Crect x='368' y='206' width='3' height='7'/%3E%3Crect x='381' y='222' width='3' height='6'/%3E%3Crect x='356' y='250' width='3' height='7'/%3E%3C/g%3E%3Cpath d='M0 300V268Q60 254 120 270T250 265T400 262V300z' fill='%23150c0f'/%3E%3Cpath d='M0 286Q70 272 140 284T280 282T400 276' fill='none' stroke='%23ff7a1a' stroke-width='9' opacity='.55' filter='url(%23b)'/%3E%3Cpath d='M0 286Q70 272 140 284T280 282T400 276' fill='none' stroke='url(%23l)' stroke-width='4'/%3E%3C/svg%3E") center bottom/100% 64vh no-repeat,radial-gradient(ellipse 80% 38% at 55% 100%,rgba(255,200,90,.7),transparent 70%),linear-gradient(180deg,#2a1230 0%,#6b2340 28%,#c4452f 58%,#ff9a3d 82%,#ffd37a 100%);
+  --emberop:1;--foot:#ffe9cf;
+  --gold2:#f2a900;--live:#e5383b;--green1:#7ed957;--green2:#3f9d2a;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10161f;--bg2:#0c1118;--stone1:#2a3446;--stone2:#222b3b;--stoneEdge:#161c28;
+    --wood1:#8a5524;--wood2:#5f3814;--woodEdge:#25140a;--text:#eef2fb;--muted:#9eacc9;--line:#3a465e;color-scheme:dark;--bgfull:var(--darkbg);--emberop:0;--foot:var(--muted);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10161f;--bg2:#0c1118;--stone1:#2a3446;--stone2:#222b3b;--stoneEdge:#161c28;
+  --wood1:#8a5524;--wood2:#5f3814;--woodEdge:#25140a;--text:#eef2fb;--muted:#9eacc9;--line:#3a465e;color-scheme:dark;--bgfull:var(--darkbg);--emberop:0;--foot:var(--muted);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--text);font-family:"Lalezar","Tahoma",sans-serif;font-size:17px;line-height:1.7;background-color:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--bgfull)}
+html[lang="en"] body{font-family:"Lilita One","Lalezar",sans-serif;letter-spacing:.02em}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 110px}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+svg.i{width:1.25em;height:1.25em;flex:none;fill:url(#g);stroke:#4a2c00;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;vertical-align:-.25em;filter:drop-shadow(0 2px 0 rgba(0,0,0,.35))}
+.gold{background:linear-gradient(180deg,#fffbd0 0%,#ffe36b 24%,#f7b500 47%,#b86e00 53%,#f2a900 70%,#ffe27a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(1px 0 0 #3d2300) drop-shadow(-1px 0 0 #3d2300) drop-shadow(0 -1px 0 #3d2300)
+  drop-shadow(0 1px 0 #7a4800) drop-shadow(0 2px 0 #6d4000) drop-shadow(0 3px 0 #5d3400) drop-shadow(0 4px 0 #4d2a00) drop-shadow(0 7px 5px rgba(0,0,0,.45))}
+.plank{background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(0,0,0,.18) 46px 48px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 3px,transparent 3px 9px),linear-gradient(180deg,var(--wood1),var(--wood2));
+  border:3px solid var(--woodEdge);box-shadow:0 5px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.2)}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:12px 0 0;padding:10px 14px;border-radius:16px}
+.logo{display:flex;align-items:center;gap:8px;margin:0;font-size:32px;line-height:1.1}
+.logo a{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo svg{width:1.5em;height:1.5em}
+.ctrl{display:flex;gap:8px}
+.chip{border:2px solid var(--woodEdge);background:linear-gradient(180deg,var(--stone1),var(--stone2));color:var(--text);font:inherit;font-size:15px;border-radius:10px;padding:2px 12px;cursor:pointer;box-shadow:0 3px 0 var(--woodEdge)}
+.chip:active{transform:translateY(2px);box-shadow:0 1px 0 var(--woodEdge)}
+.chip[aria-pressed="true"]{background:linear-gradient(180deg,#ffe98f,#f2a900);color:#3d2300}
+.chip:focus-visible,.btn:focus-visible,a:focus-visible,.tab:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
+.sign{display:inline-flex;align-items:center;gap:10px;margin:30px 0 12px;padding:2px 20px 6px;border-radius:12px;font-size:24px;line-height:1.4}
+.row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:30px 0 12px}
+.row .sign{margin:0}
+.seg{display:flex;gap:8px}
+.stone{background:linear-gradient(180deg,var(--stone1),var(--stone2));border:3px solid var(--stoneEdge);border-radius:16px;box-shadow:0 5px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.35);overflow:hidden;position:relative}
+.player{aspect-ratio:16/9;background:linear-gradient(135deg,#1c2b4d,#4a2f66);display:flex;align-items:center;justify-content:center;position:relative;color:#fff;text-align:center;padding:12px;border-bottom:3px solid var(--stoneEdge)}
+.player p{margin:0;font-size:18px;opacity:.92}
+.badge{position:absolute;top:10px;inset-inline-start:10px;background:var(--live);color:#fff;border-radius:8px;padding:0 12px;font-size:15px;border:2px solid #7a1316}
+.score{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;padding:14px 12px;text-align:center}
+.score b{font-size:20px;display:block}
+.score span{color:var(--muted);font-size:15px}
+.vs{font-family:"Lilita One",sans-serif;font-size:28px}
+.scroll{overflow-x:auto}
+.arena{position:relative;overflow:hidden;border:3px solid #3a1d10;border-radius:16px;box-shadow:0 5px 0 rgba(0,0,0,.4),inset 0 0 44px rgba(255,90,20,.28);
+  background:radial-gradient(ellipse at 18% 100%,rgba(255,90,20,.4),transparent 55%),radial-gradient(ellipse at 85% 100%,rgba(255,150,30,.32),transparent 50%),
+  repeating-linear-gradient(115deg,rgba(0,0,0,.28) 0 2px,transparent 2px 38px),repeating-linear-gradient(35deg,rgba(255,120,40,.1) 0 1px,transparent 1px 46px),
+  linear-gradient(180deg,#17121a,#2a1d22 60%,#3b2118)}
+.sky{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.meteor{position:absolute;top:-30px;left:var(--x);width:4px;height:80px;border-radius:4px;transform-origin:top;opacity:0;
+  background:linear-gradient(180deg,rgba(255,190,80,0),#ff9a2e 70%,#fff4c2);box-shadow:0 0 10px 2px rgba(255,140,40,.7);animation:fall var(--d) linear var(--w) infinite}
+.meteor:nth-child(1){--x:4%;--d:4s;--w:0s}.meteor:nth-child(2){--x:28%;--d:5s;--w:1.4s}.meteor:nth-child(3){--x:52%;--d:3.6s;--w:2.2s}
+.meteor:nth-child(4){--x:14%;--d:4.6s;--w:3s}.meteor:nth-child(5){--x:72%;--d:5.4s;--w:.8s}.meteor:nth-child(6){--x:40%;--d:4.2s;--w:3.8s}
+@keyframes fall{0%{transform:translate(0,0) rotate(-40deg);opacity:0}8%{opacity:1}100%{transform:translate(440px,540px) rotate(-40deg);opacity:0}}
+.arena .scroll{position:relative;direction:ltr}
+.bracket{display:flex;gap:22px;direction:ltr;padding:52px 18px 18px;width:max-content;min-height:100%}
+.col{position:relative;display:flex;flex-direction:column;width:140px}
+.col.cf{width:168px}
+.col h4{margin:0 0 8px;text-align:center;font-weight:normal;font-size:16px;color:#ffb347;text-shadow:0 0 8px rgba(255,120,30,.8),0 1px 0 #000}
+.trophy{position:absolute;left:50%;top:-46px;transform:translateX(-50%);width:54px;height:54px}
+.ms{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:10px}
+.m{position:relative;border:2px solid #7a4a2e;border-radius:10px;background:linear-gradient(180deg,#3b2f35,#241c21);box-shadow:0 0 10px rgba(255,100,20,.25);font-size:15px;line-height:1.35}
+.m::before,.m::after{content:"";position:absolute;top:50%;width:22px;border-top:2px solid #c8641c;display:none}
+.cl .m::after{display:block;right:-22px}.cl:not(.first) .m::before{display:block;left:-22px}
+.cr .m::before{display:block;left:-22px}.cr:not(.first) .m::after{display:block;right:-22px}
+.cf .m::before{display:block;left:-22px}.cf .m::after{display:block;right:-22px}
+.tm{position:relative;display:flex;justify-content:space-between;align-items:center;gap:6px;padding:3px 8px;color:#c9b8a4;overflow:hidden}
+.tm:first-child{border-radius:8px 8px 0 0}.tm:last-child{border-radius:0 0 8px 8px}
+.tm+.tm{border-top:2px solid #7a4a2e}
+.tm.l,.tm.n{opacity:.5}
+.tm .nm,.tm em{position:relative;z-index:1}
+.tm em{font-style:normal;font-size:13px}
+.tm em svg{width:.9em;height:.9em;margin-inline-end:2px}
+.tm.w{color:#fff;background:linear-gradient(90deg,rgba(0,150,255,.7),rgba(120,230,255,.55) 55%,rgba(255,235,120,.5))}
+.tm.w .nm{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff;animation:zap 1.6s steps(1) infinite}
+.tm.w svg.b{width:1em;height:1em;margin-inline-end:3px;filter:drop-shadow(0 0 4px #29b6ff)}
+.tm.w::after{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;animation:arc 1.6s steps(1) infinite;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpolyline points='0,10 12,3 22,15 34,5 45,16 58,4 70,14 82,3 100,10' fill='none' stroke='%23f2fdff' stroke-width='1.6'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+@keyframes zap{0%{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}38%{text-shadow:0 0 2px #fff,0 0 12px #fff3a0,0 0 24px #ffd24a}42%{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}70%{text-shadow:0 0 2px #fff,0 0 12px #fff3a0,0 0 24px #ffd24a}74%{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}}
+@keyframes arc{0%{opacity:.9;transform:scaleY(1)}8%{opacity:0}40%{opacity:.85;transform:scaleY(-1)}48%{opacity:0}72%{opacity:.9;transform:scaleY(1)}80%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.meteor,.tm.w .nm,.tm.w::after{animation:none}.meteor{display:none}}
+.clans{display:grid;gap:12px}
+.clan{padding:12px 14px;display:flex;align-items:center;gap:12px}
+.clan .ic{width:58px;height:58px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:12px;font-size:34px}
+.clan div.t{flex:1;min-width:0}
+.clan h3{margin:0;font-size:20px;line-height:1.3}
+.clan p{margin:0;color:var(--muted);font-size:15px}
+.btn{display:inline-block;text-decoration:none;font:inherit;font-size:17px;color:#fff;border:2px solid #2a6d1b;border-radius:12px;padding:5px 16px;white-space:nowrap;cursor:pointer;
+  background:linear-gradient(180deg,var(--green1),var(--green2));box-shadow:0 4px 0 #2a6d1b;text-shadow:0 1px 0 #1c4a12}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #2a6d1b}
+.cta{padding:20px 16px;text-align:center}
+.cta p{margin:0 0 14px;color:var(--muted)}
+.event{display:flex;align-items:center;gap:10px;padding:12px 14px;border-top:2px solid var(--line)}
+.event:first-child{border-top:0}
+.event b{flex:1}
+.event .d{color:var(--muted)}
+.soonbox{padding:34px 18px;text-align:center}
+.soonbox svg{width:110px;height:110px;margin:0 auto 6px;display:block}
+.soonbox h3{margin:0 0 6px;font-size:30px;line-height:1.3}
+.soonbox p{margin:0;color:var(--muted)}
+[hidden]{display:none!important}
+footer{margin-top:34px;text-align:center;color:var(--foot);text-shadow:0 1px 3px rgba(0,0,0,.55);font-size:14px}
+nav{position:fixed;bottom:0;left:0;right:0;margin:0 auto;max-width:760px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-radius:18px 18px 0 0;border-bottom:0;z-index:5}
+.tab{position:relative;display:flex;flex-direction:column;align-items:center;padding:4px 2px;border:2px solid transparent;border-radius:12px;color:#fff1d6;
+  font-size:15px;line-height:1.3;text-decoration:none;text-shadow:0 1px 0 var(--woodEdge)}
+.tab svg{width:32px;height:32px}
+.tab.on{background:rgba(0,0,0,.28);border-color:var(--woodEdge)}
+.tab .soon{position:absolute;top:-6px;inset-inline-end:6px;background:var(--live);border:2px solid #7a1316;border-radius:8px;padding:0 6px;font-size:11px;line-height:1.4;color:#fff}
+
+#arena{cursor:pointer}
+#arena .scroll{overflow:hidden}
+.hint{position:relative;text-align:center;font-size:14px;color:#ffcf8a;padding:0 8px 8px;text-shadow:0 0 6px rgba(255,120,30,.7)}
+.bracket.mini{width:100%;gap:5px;padding:32px 8px 8px;min-height:0}
+.mini .trophy{width:32px;height:32px;top:-34px}
+.mini .col{flex:1;min-width:0;width:auto}
+.mini .col.cf{flex:1.3}
+.mini h4{display:none}
+.mini .ms{gap:4px}
+.mini .m{border-width:1.5px;border-radius:6px;font-size:11px;line-height:1.2;box-shadow:0 0 6px rgba(255,100,20,.25)}
+.mini .m::before,.mini .m::after{width:6px;border-top-width:1.5px}
+.mini .cl .m::after,.mini .cr:not(.first) .m::after,.mini .cf .m::after{right:-6px}
+.mini .cl:not(.first) .m::before,.mini .cr .m::before,.mini .cf .m::before{left:-6px}
+.mini .tm{padding:1px 2px;justify-content:center;font-size:11px}
+.mini .tm:first-child{border-radius:5px 5px 0 0}.mini .tm:last-child{border-radius:0 0 5px 5px}
+.mini .tm+.tm{border-top-width:1.5px}
+.modal{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;padding:calc(12px + env(safe-area-inset-top,0px)) 10px calc(12px + env(safe-area-inset-bottom,0px))}
+.mbox{width:100%;max-width:1000px;max-height:100%;display:flex;flex-direction:column;gap:8px;min-height:0}
+.mbox .chip{align-self:flex-end}
+.mbox .arena{min-height:0}
+.mbox .scroll{overflow:auto;max-height:calc(100vh - 130px);max-height:calc(100dvh - 130px)}
+
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--emberop,0);background:radial-gradient(circle 3px at 12% 80%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 34% 40%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 58% 92%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 80% 55%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 22% 14%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 70% 22%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 90% 86%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent);background-size:320px 420px;animation:rise 14s linear infinite}
+@keyframes rise{from{background-position:0 0}to{background-position:0 -420px}}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}}
+
+a.chip{text-decoration:none;display:inline-block;margin-top:14px}
+.seg{flex-wrap:wrap}
+.banner{display:block;position:relative;min-height:182px;overflow:hidden;border-radius:18px;border:4px solid var(--woodEdge);box-shadow:0 6px 0 rgba(0,0,0,.4),0 0 24px rgba(255,170,60,.35);margin-bottom:18px;text-decoration:none;color:#fff;isolation:isolate}
+.banner:active{transform:translateY(2px)}
+.banner .art{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+html[dir="ltr"] .banner .art{transform:scaleX(-1)}
+.banner .big{position:absolute;inset-inline-end:10px;bottom:6px;width:118px;height:118px;filter:drop-shadow(0 0 14px rgba(255,220,120,.75))}
+.bcont{position:relative;padding:14px 18px 16px;max-width:64%}
+.bcont h3{margin:6px 0 2px;font-size:30px;line-height:1.2}
+.bcont p{margin:0 0 10px;font-size:15px;line-height:1.5;color:#ffe9cf;text-shadow:0 1px 3px #000}
+.tag{display:inline-block;background:var(--live);border:2px solid #7a1316;border-radius:8px;padding:0 10px;font-size:14px;color:#fff}
+.banner::after{content:"";position:absolute;top:0;bottom:0;width:70px;left:-120px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,55%{left:-120px}100%{left:120%}}
+.regp{padding:14px}
+.regrow{display:flex;justify-content:space-between;margin-top:12px}
+.bar{height:14px;border-radius:8px;background:rgba(0,0,0,.25);border:2px solid var(--stoneEdge);overflow:hidden;margin:4px 0 12px}
+.bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--green2),var(--green1))}
+.rule{display:flex;gap:10px;align-items:flex-start;padding:4px 0;font-size:16px;line-height:1.5}
+.rule svg{margin-top:2px}
+.regp .btn{margin-top:10px}
+.groups{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:620px){.groups{grid-template-columns:repeat(4,1fr)}}
+.gh{padding:0 10px 3px;font-size:16px;color:#fff1d6;text-shadow:0 1px 0 var(--woodEdge);border-width:0 0 3px 0;border-radius:0;box-shadow:none}
+.gr{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:3px 10px;border-top:2px solid var(--line);font-size:15px}
+.gh+.gr{border-top:0}
+.gr.q{background:linear-gradient(90deg,rgba(80,200,90,.38),rgba(255,226,107,.32))}
+.gr .nm svg{width:.95em;height:.95em;margin-inline-end:3px}
+.gr b{font-weight:normal;color:var(--muted)}
+.more{text-align:center;margin-top:6px}
+.more .chip{margin-top:4px}
+.mini.dense .tm{font-size:9.5px}
+@media (prefers-reduced-motion:reduce){.banner::after{animation:none}}
+
+.banner::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(270deg,rgba(0,0,0,.6) 0,rgba(0,0,0,.4) 55%,transparent 85%)}
+html[dir="ltr"] .banner::before{background:linear-gradient(90deg,rgba(0,0,0,.6) 0,rgba(0,0,0,.4) 55%,transparent 85%)}
+.bcont p{max-width:100%}
+</style>
+</head>
+<body>
+<svg class="defs" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbd0"/><stop offset=".3" stop-color="#ffe36b"/><stop offset=".55" stop-color="#f2a900"/><stop offset=".6" stop-color="#c47a00"/><stop offset="1" stop-color="#ffd24a"/></linearGradient>
+    <linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bff3ff"/><stop offset=".5" stop-color="#2f9bff"/><stop offset="1" stop-color="#1a3fb0"/></linearGradient>
+    <linearGradient id="gf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd24a"/><stop offset=".5" stop-color="#ff7a1a"/><stop offset="1" stop-color="#d62828"/></linearGradient>
+    <linearGradient id="gw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c98a4b"/><stop offset="1" stop-color="#7a4a1c"/></linearGradient>
+    <linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7b7b"/><stop offset="1" stop-color="#b3151b"/></linearGradient>
+  <linearGradient id="gz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#4fd8ff"/></linearGradient></defs>
+  <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 3l17 5v14c0 11-7 19-17 23C14 41 7 33 7 22V8z"/><path d="M24 8l12 3.6V22c0 8-5 14-12 17-7-3-12-9-12-17V11.6z" fill="url(#gr)" stroke-width="2"/><path d="M14 14l20 20M34 14L14 34" fill="none" stroke-width="6.5"/><path d="M14 14l20 20M34 14L14 34" fill="none" stroke="#ffe98f" stroke-width="3"/><circle cx="24" cy="24" r="4" fill="url(#g)" stroke-width="2"/><path d="M10 10l8-2" stroke="#fff" stroke-opacity=".8" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-swords" viewBox="0 0 48 48"><path d="M5 5l9-1 27 28-4 4z"/><path d="M43 5l-9-1L7 32l4 4z"/><path d="M8 8l26 27M40 8L14 35" stroke="#fff" stroke-opacity=".75" stroke-width="1.6" fill="none"/><path d="M31 36l7 7 3-3-7-7zM17 36l-7 7-3-3 7-7z"/><circle cx="9" cy="43" r="2.6" fill="url(#gr)" stroke-width="1.6"/><circle cx="39" cy="43" r="2.6" fill="url(#gr)" stroke-width="1.6"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 48 48"><path d="M14 5h20v13c0 7-4 11-10 11s-10-4-10-11z"/><path d="M14 9H6c0 8 3 12 9 13M34 9h8c0 8-3 12-9 13" fill="none"/><path d="M21 29h6v7h-6z"/><path d="M12 43h24v-4c0-2-2-3-4-3H16c-2 0-4 1-4 3z"/><path d="M17 8h3v11c0 3 1 5 3 6-4-1-6-4-6-8z" fill="#fff" fill-opacity=".6" stroke="none"/><path d="M24 11l2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8L17 16l4.8-.7z" fill="url(#gr)" stroke-width="1.5"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 48 48"><path d="M4 36l3-22 11 10 6-15 6 15 11-10 3 22z"/><path d="M4 39h40v5H4z"/><path d="M9 18l2 14M20 26l2 7" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none"/><circle cx="7" cy="13" r="2.8" fill="#fff3c4" stroke-width="1.8"/><circle cx="24" cy="8" r="2.8" fill="#fff3c4" stroke-width="1.8"/><circle cx="41" cy="13" r="2.8" fill="#fff3c4" stroke-width="1.8"/><path d="M24 26l4 4-4 5-4-5z" fill="url(#gr)" stroke-width="2"/><circle cx="12" cy="32" r="2.4" fill="url(#gb)" stroke-width="1.6"/><circle cx="36" cy="32" r="2.4" fill="url(#gb)" stroke-width="1.6"/></symbol>
+  <symbol id="i-gem" viewBox="0 0 48 48"><g stroke="#0b2a55"><path d="M13 7h22l9 12-20 24L4 19z" fill="url(#gb)"/><path d="M4 19h40M17 19l7 24 7-24M13 7l4 12 7-12 7 12 4-12" fill="none" stroke-width="2"/><path d="M14 9h6l-3 8-8 1z" fill="#fff" fill-opacity=".6" stroke="none"/></g></symbol>
+  <symbol id="i-flame" viewBox="0 0 48 48"><path d="M25 2c2 9 13 13 13 26a13 13 0 0 1-26 0c0-6 3-9 6-13 0 4 2 7 4 7 0-7-1-12 3-20z" fill="url(#gf)"/><path d="M24 24c3 4 7 6 7 11a7 7 0 0 1-14 0c0-5 4-7 7-11z" fill="#ffe98f" stroke-width="2"/><path d="M16 22c-2 3-3 6-3 9" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-castle" viewBox="0 0 48 48"><path d="M5 43V15h8v5h5v-5h12v5h5v-5h8v28z"/><path d="M19 43V34a5 5 0 0 1 10 0v9z" fill="#4a2c00"/><path d="M9 23v5M39 23v5" stroke-width="3" fill="none"/><path d="M9 15V5l9 3.5L9 12" fill="url(#gr)" stroke-width="2"/><path d="M8 17v24" stroke="#fff" stroke-opacity=".55" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-chest" viewBox="0 0 48 48"><path d="M5 22a8 8 0 0 1 8-8h22a8 8 0 0 1 8 8z" fill="url(#gw)"/><path d="M5 22h38v21H5z" fill="url(#gw)"/><path d="M13 14v29M35 14v29" stroke-width="4.5" fill="none"/><path d="M13 14v29M35 14v29" stroke="#ffd24a" stroke-width="2" fill="none"/><path d="M5 30h38" fill="none"/><rect x="19.5" y="25" width="9" height="11" rx="2"/><circle cx="24" cy="30" r="2" fill="#4a2c00" stroke="none"/><path d="M9 17l10-1" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 48 48"><path d="M28 2L9 27h12l-4 19 22-29H26z" fill="url(#gz)" stroke="#05304a"/></symbol>
+  <symbol id="i-star" viewBox="0 0 48 48"><path d="M24 3l6.2 13.4 14.5 1.8-10.7 10 2.8 14.4L24 35l-12.8 7.6L14 28.2 3.3 18.2l14.5-1.8z"/><path d="M24 9l-4 9-8 1" stroke="#fff" stroke-opacity=".7" stroke-width="2" fill="none"/></symbol>
+</svg>
+<div class="wrap">
+<header class="plank">
+  <h1 class="logo"><a href="#tournaments"><svg class="i"><use href="#i-shield"/></svg><span class="gold" data-k="name">وارهولد</span></a></h1>
+  <div class="ctrl">
+    <button class="chip" id="lang" type="button">EN</button>
+    <button class="chip" id="t" type="button" data-k="night">حالت شب</button>
+  </div>
+</header>
+
+<main>
+<section data-v="tournaments">
+  <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" data-k="pick">تورنمنت‌ها</span></h2>
+  <a class="banner" href="#solo"><svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="bs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b0f4a"/><stop offset=".55" stop-color="#3a1c8c"/><stop offset="1" stop-color="#0b2a6b"/></linearGradient><radialGradient id="bsg"><stop offset="0" stop-color="#7fe9ff" stop-opacity=".85"/><stop offset="1" stop-color="#7fe9ff" stop-opacity="0"/></radialGradient><filter id="bf"><feGaussianBlur stdDeviation="3"/></filter></defs><rect width="400" height="180" fill="url(#bs)"/><circle cx="85" cy="95" r="125" fill="url(#bsg)"/><polygon points="60,0 120,0 230,180 -50,180" fill="#bff3ff" opacity=".1"/><g fill="none" stroke-linejoin="round"><polyline points="330,0 308,62 338,64 296,134 322,136 276,180" stroke="#29b6ff" stroke-width="9" opacity=".6" filter="url(#bf)"/><polyline points="330,0 308,62 338,64 296,134 322,136 276,180" stroke="#eafcff" stroke-width="3"/><polyline points="210,0 198,42 216,44 190,96" stroke="#29b6ff" stroke-width="6" opacity=".6" filter="url(#bf)"/><polyline points="210,0 198,42 216,44 190,96" stroke="#eafcff" stroke-width="2.2"/></g><g fill="#fff"><circle cx="150" cy="24" r="1.6"/><circle cx="250" cy="150" r="1.4"/><circle cx="370" cy="110" r="1.6"/><circle cx="30" cy="30" r="1.3"/><circle cx="180" cy="160" r="1.2"/></g></svg><div class="bcont"><span class="tag" data-k="regOpen">ثبت‌نام باز</span><h3 class="gold" data-k="soloT">تورنمنت تک‌نفره</h3><p data-k="soloS">گروه‌های ۴ نفره · دو نفر برتر هر گروه صعود می‌کنند</p><span class="btn" data-k="open">ورود</span></div><svg class="i big"><use href="#i-shield"/></svg></a>
+  <a class="banner" href="#clanwar"><svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="bc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a0a10"/><stop offset=".55" stop-color="#9b1d1d"/><stop offset="1" stop-color="#ff8a2a"/></linearGradient><radialGradient id="bcg"><stop offset="0" stop-color="#ffd24a" stop-opacity=".9"/><stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/></radialGradient></defs><rect width="400" height="180" fill="url(#bc)"/><ellipse cx="200" cy="190" rx="260" ry="90" fill="url(#bcg)"/><use href="#i-castle" x="262" y="34" width="150" height="150" opacity=".3"/><use href="#i-castle" x="-30" y="58" width="120" height="120" opacity=".6"/><use href="#i-flame" x="150" y="100" width="56" height="56"/><use href="#i-flame" x="118" y="122" width="38" height="38" opacity=".9"/><g fill="#ffd24a"><circle cx="140" cy="60" r="1.8"/><circle cx="210" cy="40" r="1.5"/><circle cx="250" cy="90" r="1.6"/><circle cx="90" cy="30" r="1.4"/><circle cx="300" cy="20" r="1.6"/><circle cx="180" cy="70" r="1.3"/></g></svg><div class="bcont"><span class="tag" data-k="badge">زنده</span><h3 class="gold" data-k="clanT">جنگ کلن‌ها</h3><p data-k="clanS">حذفی ۱۶ یا ۳۲ کلن با پخش زنده</p><span class="btn" data-k="open">ورود</span></div><svg class="i big"><use href="#i-crown"/></svg></a>
+</section>
+
+<section data-v="clanwar" hidden>
+  <a class="chip back" href="#tournaments" data-k="back">بازگشت</a>
+  <h2 class="sign plank"><svg class="i"><use href="#i-swords"/></svg><span class="gold" data-k="live">جنگ زنده</span></h2>
+  <div class="stone">
+    <div class="player"><span class="badge" data-k="badge">زنده</span><p data-k="player">اینجا پخش زنده آپارات نمایش داده می‌شود</p></div>
+    <div class="score">
+      <div><b data-k="cx">کلن ایکس</b><span data-k="sx">۳۸ ستاره · ۹۲٪</span></div>
+      <div class="vs gold">VS</div>
+      <div><b data-k="cy">کلن وای</b><span data-k="sy">۳۵ ستاره · ۸۸٪</span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" data-k="board">جدول حذفی</span></h2>
+    <div class="seg">
+      <button class="chip" type="button" data-n="16" data-k="t16" aria-pressed="true">۱۶ تیم</button>
+      <button class="chip" type="button" data-n="32" data-k="t32" aria-pressed="false">۳۲ تیم</button>
+    </div>
+  </div>
+  <div class="arena" id="arena" role="button" tabindex="0"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket mini" id="bracket"></div></div><div class="hint" data-k="hint">برای مشاهده کامل جدول لمس کن</div></div>
+
+  <h2 class="sign plank"><svg class="i"><use href="#i-flame"/></svg><span class="gold" data-k="events">مسابقه‌های بعدی</span></h2>
+  <div class="stone">
+    <div class="event"><svg class="i"><use href="#i-swords"/></svg><b data-k="e1">نیمه‌نهایی ۱</b><span class="d" data-k="e1d">جمعه ۲۱:۰۰</span></div>
+    <div class="event"><svg class="i"><use href="#i-swords"/></svg><b data-k="e2">نیمه‌نهایی ۲</b><span class="d" data-k="e2d">شنبه ۲۱:۰۰</span></div>
+  </div>
+</section>
+
+<section data-v="solo" hidden>
+  <a class="chip back" href="#tournaments" data-k="back">بازگشت</a>
+  <h2 class="sign plank"><svg class="i"><use href="#i-shield"/></svg><span class="gold" data-k="soloH">تورنمنت تک‌نفره</span></h2>
+  <div class="stone regp">
+    <div class="seg"><button class="chip" type="button" data-s="64" data-k="f64" aria-pressed="true">۶۴ نفر · ۱۶ گروه</button><button class="chip" type="button" data-s="128" data-k="f128" aria-pressed="false">۱۲۸ نفر · ۳۲ گروه</button></div>
+    <div class="regrow"><span data-k="regC">ثبت‌نام‌شده</span><b id="regnum"></b></div><div class="bar"><i></i></div>
+    <div class="rule"><svg class="i"><use href="#i-swords"/></svg><span data-k="rule1"></span></div>
+    <div class="rule"><svg class="i"><use href="#i-star"/></svg><span data-k="rule2"></span></div>
+    <div class="rule"><svg class="i"><use href="#i-gem"/></svg><span data-k="rule3"></span></div>
+    <a class="btn" href="#solo" data-k="regBtn">ثبت‌نام در ربات</a>
+  </div>
+  <h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold" data-k="groupsT">مرحله گروهی</span></h2>
+  <div class="groups" id="groups"></div>
+  <div class="more"><button class="chip" id="toggleG" type="button"></button></div>
+  <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" data-k="koT">مرحله حذفی</span></h2>
+  <div class="arena" id="arenaSolo" role="button" tabindex="0"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket mini" id="bracketSolo"></div></div><div class="hint" data-k="hint">برای مشاهده کامل جدول لمس کن</div></div>
+</section>
+
+<section data-v="clans" hidden>
+  <h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold" data-k="clans">کلن‌ها</span></h2>
+  <div class="clans">
+    <div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-crown"/></svg></div><div class="t"><h3 data-k="cx">کلن ایکس</h3><p data-k="m1">سطح ۱۸ · ۴۸ عضو</p></div><a class="btn" href="#clans" data-k="join">ورود به کلن</a></div>
+    <div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-flame"/></svg></div><div class="t"><h3 data-k="cy">کلن وای</h3><p data-k="m2">سطح ۱۵ · ۴۵ عضو</p></div><a class="btn" href="#clans" data-k="join">ورود به کلن</a></div>
+    <div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-gem"/></svg></div><div class="t"><h3 data-k="cz">کلن زد</h3><p data-k="m3">سطح ۱۲ · ۳۹ عضو</p></div><a class="btn" href="#clans" data-k="join">ورود به کلن</a></div>
+  </div>
+  <h2 class="sign plank"><svg class="i"><use href="#i-castle"/></svg><span class="gold" data-k="own">کلن داری؟</span></h2>
+  <div class="stone cta">
+    <p data-k="ownp">کلنت را از طریق ربات تلگرام ثبت کن تا بعد از تأیید در این لیست بیاید.</p>
+    <a class="btn" href="#clans" data-k="reg">ثبت کلن در ربات</a>
+  </div>
+</section>
+
+<section data-v="store" hidden>
+  <h2 class="sign plank"><svg class="i"><use href="#i-chest"/></svg><span class="gold" data-k="navS">فروشگاه</span></h2>
+  <div class="stone soonbox">
+    <svg class="i"><use href="#i-chest"/></svg>
+    <h3 class="gold" data-k="storeT">به زودی افتتاح می‌شود</h3>
+    <p data-k="storeP">اکانت و آفر بازی با پرداخت کارت‌به‌کارت، به‌زودی اینجا.</p>
+  </div>
+</section>
+</main>
+
+<footer data-k="foot">وارهولد · سایت مستقل و غیررسمی هواداران</footer>
+</div>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true"><div class="mbox"><button class="chip" id="close" type="button" data-k="close">بستن</button><div class="arena"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket" id="bracketFull"></div></div></div></div></div>
+
+<nav class="plank">
+  <a class="tab" href="#tournaments" data-r="tournaments"><svg class="i"><use href="#i-trophy"/></svg><span data-k="navT">تورنمنت</span></a>
+  <a class="tab" href="#clans" data-r="clans"><svg class="i"><use href="#i-crown"/></svg><span data-k="navC">کلن‌ها</span></a>
+  <a class="tab" href="#store" data-r="store"><span class="soon" data-k="soon">به زودی</span><svg class="i"><use href="#i-chest"/></svg><span data-k="navS2">فروشگاه</span></a>
+</nav>
+
+<script>
+(function(){
+  var fa={name:"وارهولد",night:"حالت شب",day:"حالت روز",live:"جنگ زنده",badge:"زنده",player:"اینجا پخش زنده آپارات نمایش داده می‌شود",
+  cx:"کلن ایکس",cy:"کلن وای",cz:"کلن زد",sx:"۳۸ ستاره · ۹۲٪",sy:"۳۵ ستاره · ۸۸٪",board:"جدول حذفی",t16:"۱۶ تیم",t32:"۳۲ تیم",
+  events:"مسابقه‌های بعدی",e1:"نیمه‌نهایی ۱",e1d:"جمعه ۲۱:۰۰",e2:"نیمه‌نهایی ۲",e2d:"شنبه ۲۱:۰۰",clans:"کلن‌ها",
+  m1:"سطح ۱۸ · ۴۸ عضو",m2:"سطح ۱۵ · ۴۵ عضو",m3:"سطح ۱۲ · ۳۹ عضو",join:"ورود به کلن",own:"کلن داری؟",
+  ownp:"کلنت را از طریق ربات تلگرام ثبت کن تا بعد از تأیید در این لیست بیاید.",reg:"ثبت کلن در ربات",
+  storeT:"به زودی افتتاح می‌شود",storeP:"اکانت و آفر بازی با پرداخت کارت‌به‌کارت، به‌زودی اینجا.",
+  foot:"وارهولد · سایت مستقل و غیررسمی هواداران",navT:"تورنمنت",navC:"کلن‌ها",navS:"فروشگاه",navS2:"فروشگاه",soon:"به زودی",
+  r64:"دور ۶۴",r32:"دور ۳۲",r16:"دور ۱۶",qf:"یک‌چهارم نهایی",sf:"نیمه‌نهایی",fin:"فینال",tbd:"مشخص نشده",clan:"کلن ",pl:"بازیکن ",
+  hint:"برای مشاهده کامل جدول لمس کن",close:"بستن",
+  pick:"تورنمنت‌ها",soloT:"تورنمنت تک‌نفره",soloS:"گروه‌های ۴ نفره · دو نفر برتر هر گروه صعود می‌کنند",clanT:"جنگ کلن‌ها",clanS:"حذفی ۱۶ یا ۳۲ کلن با پخش زنده",
+  open:"ورود",regOpen:"ثبت‌نام باز",back:"بازگشت",soloH:"تورنمنت تک‌نفره",regC:"ثبت‌نام‌شده",f64:"۶۴ نفر · ۱۶ گروه",f128:"۱۲۸ نفر · ۳۲ گروه",
+  rule1:"هر گروه ۴ نفره است و همه با هم بازی می‌کنند",rule2:"دو نفر اول هر گروه به مرحله حذفی صعود می‌کنند",
+  rule3:"تعداد گروه‌ها به ثبت‌نام‌ها بستگی دارد: تا ۶۴ نفر ۱۶ گروه، تا ۱۲۸ نفر ۳۲ گروه",regBtn:"ثبت‌نام در ربات",
+  groupsT:"مرحله گروهی",grp:"گروه ",showAll:"نمایش همه گروه‌ها",showLess:"نمایش کمتر",koT:"مرحله حذفی"};
+  var en={name:"Warhold",night:"Night",day:"Day",live:"Live war",badge:"LIVE",player:"The Aparat live stream will appear here",
+  cx:"Clan X",cy:"Clan Y",cz:"Clan Z",sx:"38 stars · 92%",sy:"35 stars · 88%",board:"Knockout bracket",t16:"16 teams",t32:"32 teams",
+  events:"Next matches",e1:"Semi-final 1",e1d:"Fri 9:00 PM",e2:"Semi-final 2",e2d:"Sat 9:00 PM",clans:"Clans",
+  m1:"Level 18 · 48 members",m2:"Level 15 · 45 members",m3:"Level 12 · 39 members",join:"Join clan",own:"Own a clan?",
+  ownp:"Register your clan through the Telegram bot and it will appear here after approval.",reg:"Register in bot",
+  storeT:"Opening soon",storeP:"Game accounts and offers with card-to-card payment, coming here soon.",
+  foot:"Warhold · Unofficial fan site",navT:"Tournaments",navC:"Clans",navS:"Store",navS2:"Store",soon:"Soon",
+  r64:"Round of 64",r32:"Round of 32",r16:"Round of 16",qf:"Quarter-finals",sf:"Semi-finals",fin:"Final",tbd:"TBD",clan:"Clan ",pl:"Player ",
+  hint:"Tap to view the full bracket",close:"Close",
+  pick:"Tournaments",soloT:"Solo tournament",soloS:"Groups of 4 · top two of each group advance",clanT:"Clan wars",clanS:"16 or 32 clan knockout with live stream",
+  open:"Enter",regOpen:"Registration open",back:"Back",soloH:"Solo tournament",regC:"Registered",f64:"64 players · 16 groups",f128:"128 players · 32 groups",
+  rule1:"Each group has 4 players who all play each other",rule2:"The top two of each group advance to the knockout stage",
+  rule3:"Groups depend on registrations: up to 64 players = 16 groups, up to 128 = 32 groups",regBtn:"Register in bot",
+  groupsT:"Group stage",grp:"Group ",showAll:"Show all groups",showLess:"Show less",koT:"Knockout stage"};
+  function $(i){return document.getElementById(i)}
+  var els=document.querySelectorAll("[data-k]");
+  var r=document.documentElement,lb=$("lang"),tb=$("t"),L="fa",N=16,S=64,showAll=false,ctx=null;
+  var bk=$("bracket"),bks=$("bracketSolo"),modal=$("modal"),bkf=$("bracketFull"),arena=$("arena"),arenaS=$("arenaSolo"),groupsEl=$("groups"),tg=$("toggleG");
+  function dark(){var t=r.getAttribute("data-theme");return t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches}
+  function num(n){return n.toLocaleString(L==="fa"?"fa-IR":"en-US")}
+  function cfgClan(){return {n:N,kind:"clan"}}
+  function cfgSolo(){return {n:(S/4)*2,kind:"solo",D:1}}
+  function draw(target,full,cfg){
+    var d=L==="fa"?fa:en,n=cfg.n,T=Math.log2(n),D=cfg.D!==undefined?cfg.D:T-2,pre=cfg.kind==="solo"?d.pl:d.clan,cur=[],i,k,rounds=[];
+    for(i=1;i<=n;i++)cur.push(i);
+    for(k=0;k<T;k++){
+      var ms=[],nxt=[];
+      for(i=0;i<cur.length;i+=2){
+        var a=cur[i],b=cur[i+1],m={a:a,b:b};
+        if(k<D&&a&&b){
+          m.w=Math.min(a,b);
+          var ws=40+((a*3+b)%9),ls=Math.max(0,ws-1-((a+b)%7));
+          m.sa=a===m.w?ws:ls;m.sb=b===m.w?ws:ls;
+        }
+        ms.push(m);nxt.push(m.w||null);
+      }
+      rounds.push(ms);cur=nxt;
+    }
+    var names={1:d.fin,2:d.sf,4:d.qf,8:d.r16,16:d.r32,32:d.r64};
+    function mt(m){
+      var h='<div class="m">';
+      [["a","sa"],["b","sb"]].forEach(function(p){
+        var t=m[p[0]],won=m.w&&m.w===t,lost=m.w&&t&&m.w!==t;
+        var cls='tm'+(won?" w":"")+(lost?" l":"")+(t?"":" n");
+        if(!full){h+='<div class="'+cls+'"><span class="nm">'+(t?num(t):"?")+'</span></div>';return}
+        h+='<div class="'+cls+'"><span class="nm">'+(won?'<svg class="i b"><use href="#i-bolt"/></svg>':"")+(t?pre+num(t):d.tbd)+'</span>'+
+          (m[p[1]]!==undefined?'<em><svg class="i"><use href="#i-star"/></svg>'+num(m[p[1]])+'</em>':"")+'</div>';
+      });
+      return h+'</div>';
+    }
+    function col(ms,cls,title){return '<div class="col '+cls+'"><h4>'+title+'</h4><div class="ms">'+ms.map(mt).join("")+'</div></div>'}
+    var left="",right="";
+    for(k=0;k<T-1;k++){
+      var ms2=rounds[k],h2=ms2.length/2;
+      left+=col(ms2.slice(0,h2),"cl"+(k===0?" first":""),names[ms2.length]);
+      right=col(ms2.slice(h2),"cr"+(k===0?" first":""),names[ms2.length])+right;
+    }
+    var fin='<div class="col cf"><svg class="i trophy"><use href="#i-trophy"/></svg><h4>'+names[1]+'</h4><div class="ms">'+mt(rounds[T-1][0])+'</div></div>';
+    target.innerHTML=left+fin+right;
+    target.classList.toggle("dense",!full&&n>=64);
+    if(full){var sc=target.parentNode;sc.scrollLeft=(sc.scrollWidth-sc.clientWidth)/2}
+  }
+  function renderGroups(){
+    var d=L==="fa"?fa:en,G=S/4,show=showAll?G:Math.min(8,G),h="",g,k,pts=[9,6,3,0];
+    for(g=1;g<=show;g++){
+      h+='<div class="stone"><div class="gh plank">'+d.grp+num(g)+'</div>';
+      for(k=1;k<=4;k++){
+        h+='<div class="gr'+(k<=2?" q":"")+'"><span class="nm">'+(k<=2?'<svg class="i"><use href="#i-star"/></svg>':"")+d.pl+num(4*(g-1)+k)+'</span><b>'+num(pts[k-1])+'</b></div>';
+      }
+      h+='</div>';
+    }
+    groupsEl.innerHTML=h;
+    tg.textContent=showAll?d.showLess:d.showAll;
+    $("regnum").textContent=num(S)+" / "+num(S);
+  }
+  function build(){
+    draw(bk,false,cfgClan());draw(bks,false,cfgSolo());renderGroups();
+    if(!modal.hidden&&ctx)draw(bkf,true,ctx);
+  }
+  function openFull(c){ctx=c;modal.hidden=false;document.body.style.overflow="hidden";draw(bkf,true,c);$("close").focus()}
+  function closeFull(){modal.hidden=true;document.body.style.overflow=""}
+  [[arena,cfgClan],[arenaS,cfgSolo]].forEach(function(p){
+    p[0].addEventListener("click",function(){openFull(p[1]())});
+    p[0].addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openFull(p[1]())}});
+  });
+  $("close").addEventListener("click",closeFull);
+  modal.addEventListener("click",function(e){if(e.target===modal)closeFull()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!modal.hidden)closeFull()});
+  function render(){
+    var d=L==="fa"?fa:en;
+    els.forEach(function(e){if(e.dataset.k==="night")return;e.textContent=d[e.dataset.k]});
+    arena.setAttribute("aria-label",d.hint);arenaS.setAttribute("aria-label",d.hint);
+    tb.textContent=dark()?d.day:d.night;
+    r.lang=L;r.dir=L==="fa"?"rtl":"ltr";lb.textContent=L==="fa"?"EN":"فا";
+    build();
+  }
+  lb.addEventListener("click",function(){L=L==="fa"?"en":"fa";render()});
+  tb.addEventListener("click",function(){r.setAttribute("data-theme",dark()?"light":"dark");render()});
+  document.querySelectorAll("[data-n]").forEach(function(b){b.addEventListener("click",function(){
+    N=+b.dataset.n;document.querySelectorAll("[data-n]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});build();
+  })});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.addEventListener("click",function(){
+    S=+b.dataset.s;showAll=false;document.querySelectorAll("[data-s]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});build();
+  })});
+  tg.addEventListener("click",function(){showAll=!showAll;renderGroups()});
+  function route(){
+    var h=location.hash.slice(1);if(["tournaments","solo","clanwar","clans","store"].indexOf(h)<0)h="tournaments";
+    var tab=(h==="solo"||h==="clanwar")?"tournaments":h;
+    document.querySelectorAll("[data-v]").forEach(function(s){s.hidden=s.dataset.v!==h});
+    document.querySelectorAll(".tab").forEach(function(a){a.classList.toggle("on",a.dataset.r===tab)});
+    window.scrollTo(0,0);
+  }
+  window.addEventListener("hashchange",route);
+  render();route();
+})();
+</script>
+</body>
+</html>
