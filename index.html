@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Warhold</title>
+<script>try{var rd=document.documentElement,lp=localStorage.getItem("wh_lite");if(lp==="1"||((navigator.hardwareConcurrency||8)<=4&&lp!=="0"))rd.classList.add("lite")}catch(e){}</script>
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lilita+One&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#c9d3e0;--bg2:#bcc7d6;--stone1:#e9edf3;--stone2:#cfd7e3;--stoneEdge:#8f9bb0;
   --wood1:#b97a3c;--wood2:#8d5522;--woodEdge:#4a2a0e;--text:#1d2638;--muted:#55627c;--line:#aab6ca;
+  --bglite:linear-gradient(180deg,#2a1230,#6b2340 40%,#c4452f 80%,#ff9a3d);
   --darkbg:linear-gradient(var(--bg2) 2px,transparent 2px) 0 0/64px 40px,linear-gradient(90deg,var(--bg2) 2px,transparent 2px) 0 0/64px 40px,var(--bg);
   --bgfull:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMax slice'%3E%3Cdefs%3E%3ClinearGradient id='l' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff1a0'/%3E%3Cstop offset='.45' stop-color='%23ff8a1f'/%3E%3Cstop offset='1' stop-color='%23d62828'/%3E%3C/linearGradient%3E%3CradialGradient id='gl'%3E%3Cstop offset='0' stop-color='%23ffd24a' stop-opacity='.95'/%3E%3Cstop offset='.5' stop-color='%23ff7a1a' stop-opacity='.45'/%3E%3Cstop offset='1' stop-color='%23ff7a1a' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='3'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%232b1a1f' opacity='.6'%3E%3Ccircle cx='205' cy='70' r='26'/%3E%3Ccircle cx='188' cy='46' r='30'/%3E%3Ccircle cx='228' cy='36' r='34'/%3E%3Ccircle cx='205' cy='12' r='30'/%3E%3Ccircle cx='255' cy='22' r='26'/%3E%3Ccircle cx='165' cy='18' r='24'/%3E%3C/g%3E%3Cg fill='%237a4a48' opacity='.3'%3E%3Ccircle cx='214' cy='60' r='18'/%3E%3Ccircle cx='236' cy='28' r='22'/%3E%3Ccircle cx='194' cy='34' r='18'/%3E%3C/g%3E%3Ccircle cx='215' cy='100' r='52' fill='url(%23gl)'/%3E%3Cpath d='M0 300V200L40 168 80 205 120 158 170 215V300z' fill='%234a2a2a'/%3E%3Cpath d='M230 300L290 190 330 215 370 165 400 190V300z' fill='%233d2223'/%3E%3Cpath d='M105 300L188 112Q215 90 242 112L325 300z' fill='%232f1c1e'/%3E%3Cpath d='M148 300L190 126 206 120 192 300z' fill='%234d312e' opacity='.7'/%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%23ff7a1a' stroke-width='10' opacity='.55' filter='url(%23b)'%3E%3Cpath d='M215 102Q205 150 190 190Q180 230 168 275'/%3E%3Cpath d='M218 104Q236 160 246 200Q254 240 264 285'/%3E%3Cpath d='M214 106Q214 170 219 235'/%3E%3C/g%3E%3Cg stroke='url(%23l)' stroke-width='4.5'%3E%3Cpath d='M215 102Q205 150 190 190Q180 230 168 275'/%3E%3Cpath d='M218 104Q236 160 246 200Q254 240 264 285'/%3E%3Cpath d='M214 106Q214 170 219 235'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23ffd24a'%3E%3Ccircle cx='180' cy='62' r='1.6'/%3E%3Ccircle cx='252' cy='52' r='1.6'/%3E%3Ccircle cx='203' cy='30' r='1.4'/%3E%3Ccircle cx='232' cy='74' r='1.5'/%3E%3Ccircle cx='160' cy='92' r='1.3'/%3E%3Ccircle cx='268' cy='96' r='1.4'/%3E%3Ccircle cx='214' cy='8' r='1.5'/%3E%3Ccircle cx='190' cy='84' r='1.2'/%3E%3C/g%3E%3Cpath d='M0 300V220h8v-8h6v8h6v-8h6v8h8v-32h6v-10l8-13 8 13v10h6v32h6V300z' fill='%231c1114'/%3E%3Cg fill='%23ffb347'%3E%3Crect x='20' y='196' width='3' height='6'/%3E%3Crect x='38' y='200' width='3' height='6'/%3E%3Crect x='12' y='240' width='3' height='7'/%3E%3Crect x='34' y='252' width='3' height='7'/%3E%3C/g%3E%3Cpath d='M342 300V234h9v-8h6v8h6v-8h6v8h9v-42h8l10-14 10 14h6v42h8V300z' fill='%231c1114'/%3E%3Cg fill='%23ffb347'%3E%3Crect x='368' y='206' width='3' height='7'/%3E%3Crect x='381' y='222' width='3' height='6'/%3E%3Crect x='356' y='250' width='3' height='7'/%3E%3C/g%3E%3Cpath d='M0 300V268Q60 254 120 270T250 265T400 262V300z' fill='%23150c0f'/%3E%3Cpath d='M0 286Q70 272 140 284T280 282T400 276' fill='none' stroke='%23ff7a1a' stroke-width='9' opacity='.55' filter='url(%23b)'/%3E%3Cpath d='M0 286Q70 272 140 284T280 282T400 276' fill='none' stroke='url(%23l)' stroke-width='4'/%3E%3C/svg%3E") center bottom/100% 64vh no-repeat,radial-gradient(ellipse 80% 38% at 55% 100%,rgba(255,200,90,.7),transparent 70%),linear-gradient(180deg,#2a1230 0%,#6b2340 28%,#c4452f 58%,#ff9a3d 82%,#ffd37a 100%);
   --emberop:1;--foot:#ffe9cf;
@@ -18,12 +20,12 @@
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#10161f;--bg2:#0c1118;--stone1:#2a3446;--stone2:#222b3b;--stoneEdge:#161c28;
-    --wood1:#8a5524;--wood2:#5f3814;--woodEdge:#25140a;--text:#eef2fb;--muted:#9eacc9;--line:#3a465e;color-scheme:dark;--bgfull:var(--darkbg);--emberop:0;--foot:var(--muted);
+    --wood1:#8a5524;--wood2:#5f3814;--woodEdge:#25140a;--text:#eef2fb;--muted:#9eacc9;--line:#3a465e;color-scheme:dark;--bgfull:var(--darkbg);--bglite:var(--bg);--emberop:0;--foot:var(--muted);
   }
 }
 :root[data-theme="dark"]{
   --bg:#10161f;--bg2:#0c1118;--stone1:#2a3446;--stone2:#222b3b;--stoneEdge:#161c28;
-  --wood1:#8a5524;--wood2:#5f3814;--woodEdge:#25140a;--text:#eef2fb;--muted:#9eacc9;--line:#3a465e;color-scheme:dark;--bgfull:var(--darkbg);--emberop:0;--foot:var(--muted);
+  --wood1:#8a5524;--wood2:#5f3814;--woodEdge:#25140a;--text:#eef2fb;--muted:#9eacc9;--line:#3a465e;color-scheme:dark;--bgfull:var(--darkbg);--bglite:var(--bg);--emberop:0;--foot:var(--muted);
 }
 *{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -34,8 +36,7 @@ html[lang="en"] body{font-family:"Lilita One","Lalezar",sans-serif;letter-spacin
 .defs{position:absolute;width:0;height:0;overflow:hidden}
 svg.i{width:1.25em;height:1.25em;flex:none;fill:url(#g);stroke:#4a2c00;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;vertical-align:-.25em;filter:drop-shadow(0 2px 0 rgba(0,0,0,.35))}
 .gold{background:linear-gradient(180deg,#fffbd0 0%,#ffe36b 24%,#f7b500 47%,#b86e00 53%,#f2a900 70%,#ffe27a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(1px 0 0 #3d2300) drop-shadow(-1px 0 0 #3d2300) drop-shadow(0 -1px 0 #3d2300)
-  drop-shadow(0 1px 0 #7a4800) drop-shadow(0 2px 0 #6d4000) drop-shadow(0 3px 0 #5d3400) drop-shadow(0 4px 0 #4d2a00) drop-shadow(0 7px 5px rgba(0,0,0,.45))}
+  filter:drop-shadow(1px 1px 0 #3d2300) drop-shadow(-1px -1px 0 #3d2300) drop-shadow(0 3px 0 #5d3400) drop-shadow(0 5px 4px rgba(0,0,0,.4))}
 .plank{background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(0,0,0,.18) 46px 48px),
   repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 3px,transparent 3px 9px),linear-gradient(180deg,var(--wood1),var(--wood2));
   border:3px solid var(--woodEdge);box-shadow:0 5px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.2)}
@@ -67,7 +68,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;mar
   linear-gradient(180deg,#17121a,#2a1d22 60%,#3b2118)}
 .sky{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .meteor{position:absolute;top:-30px;left:var(--x);width:4px;height:80px;border-radius:4px;transform-origin:top;opacity:0;
-  background:linear-gradient(180deg,rgba(255,190,80,0),#ff9a2e 70%,#fff4c2);box-shadow:0 0 10px 2px rgba(255,140,40,.7);animation:fall var(--d) linear var(--w) infinite}
+  background:linear-gradient(180deg,rgba(255,190,80,0),#ff9a2e 70%,#fff4c2);animation:fall var(--d) linear var(--w) infinite}
 .meteor:nth-child(1){--x:4%;--d:4s;--w:0s}.meteor:nth-child(2){--x:28%;--d:5s;--w:1.4s}.meteor:nth-child(3){--x:52%;--d:3.6s;--w:2.2s}
 .meteor:nth-child(4){--x:14%;--d:4.6s;--w:3s}.meteor:nth-child(5){--x:72%;--d:5.4s;--w:.8s}.meteor:nth-child(6){--x:40%;--d:4.2s;--w:3.8s}
 @keyframes fall{0%{transform:translate(0,0) rotate(-40deg);opacity:0}8%{opacity:1}100%{transform:translate(440px,540px) rotate(-40deg);opacity:0}}
@@ -91,11 +92,10 @@ header{display:flex;align-items:center;justify-content:space-between;gap:8px;mar
 .tm em{font-style:normal;font-size:13px}
 .tm em svg{width:.9em;height:.9em;margin-inline-end:2px}
 .tm.w{color:#fff;background:linear-gradient(90deg,rgba(0,150,255,.7),rgba(120,230,255,.55) 55%,rgba(255,235,120,.5))}
-.tm.w .nm{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff;animation:zap 1.6s steps(1) infinite}
+.tm.w .nm{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}
 .tm.w svg.b{width:1em;height:1em;margin-inline-end:3px;filter:drop-shadow(0 0 4px #29b6ff)}
 .tm.w::after{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;animation:arc 1.6s steps(1) infinite;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpolyline points='0,10 12,3 22,15 34,5 45,16 58,4 70,14 82,3 100,10' fill='none' stroke='%23f2fdff' stroke-width='1.6'/%3E%3C/svg%3E") center/100% 100% no-repeat}
-@keyframes zap{0%{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}38%{text-shadow:0 0 2px #fff,0 0 12px #fff3a0,0 0 24px #ffd24a}42%{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}70%{text-shadow:0 0 2px #fff,0 0 12px #fff3a0,0 0 24px #ffd24a}74%{text-shadow:0 0 4px #7fe9ff,0 0 10px #29b6ff,0 0 18px #1b8cff}}
 @keyframes arc{0%{opacity:.9;transform:scaleY(1)}8%{opacity:0}40%{opacity:.85;transform:scaleY(-1)}48%{opacity:0}72%{opacity:.9;transform:scaleY(1)}80%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.meteor,.tm.w .nm,.tm.w::after{animation:none}.meteor{display:none}}
 .clans{display:grid;gap:12px}
@@ -149,9 +149,6 @@ nav{position:fixed;bottom:0;left:0;right:0;margin:0 auto;max-width:760px;display
 .mbox .arena{min-height:0}
 .mbox .scroll{overflow:auto;max-height:calc(100vh - 130px);max-height:calc(100dvh - 130px)}
 
-body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--emberop,0);background:radial-gradient(circle 3px at 12% 80%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 34% 40%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 58% 92%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 80% 55%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 22% 14%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 70% 22%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent),radial-gradient(circle 3px at 90% 86%,#ffe27a 25%,rgba(255,120,30,.65) 60%,transparent);background-size:320px 420px;animation:rise 14s linear infinite}
-@keyframes rise{from{background-position:0 0}to{background-position:0 -420px}}
-@media (prefers-reduced-motion:reduce){body::after{animation:none}}
 
 a.chip{text-decoration:none;display:inline-block;margin-top:14px}
 .seg{flex-wrap:wrap}
@@ -164,8 +161,8 @@ html[dir="ltr"] .banner .art{transform:scaleX(-1)}
 .bcont h3{margin:6px 0 2px;font-size:30px;line-height:1.2}
 .bcont p{margin:0 0 10px;font-size:15px;line-height:1.5;color:#ffe9cf;text-shadow:0 1px 3px #000}
 .tag{display:inline-block;background:var(--live);border:2px solid #7a1316;border-radius:8px;padding:0 10px;font-size:14px;color:#fff}
-.banner::after{content:"";position:absolute;top:0;bottom:0;width:70px;left:-120px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite;pointer-events:none}
-@keyframes shine{0%,55%{left:-120px}100%{left:120%}}
+.banner::after{content:"";position:absolute;top:0;bottom:0;left:0;width:70px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-150%) skewX(-20deg);animation:shine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,55%{transform:translateX(-150%) skewX(-20deg)}100%{transform:translateX(600%) skewX(-20deg)}}
 .regp{padding:14px}
 .regrow{display:flex;justify-content:space-between;margin-top:12px}
 .bar{height:14px;border-radius:8px;background:rgba(0,0,0,.25);border:2px solid var(--stoneEdge);overflow:hidden;margin:4px 0 12px}
@@ -189,9 +186,77 @@ html[dir="ltr"] .banner .art{transform:scaleX(-1)}
 .banner::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(270deg,rgba(0,0,0,.6) 0,rgba(0,0,0,.4) 55%,transparent 85%)}
 html[dir="ltr"] .banner::before{background:linear-gradient(90deg,rgba(0,0,0,.6) 0,rgba(0,0,0,.4) 55%,transparent 85%)}
 .bcont p{max-width:100%}
+
+.ctrl a.chip{margin-top:0;padding:2px 8px;display:inline-flex;align-items:center}
+.ctrl a.chip svg{width:1.3em;height:1.3em}
+.chip.on{background:linear-gradient(180deg,#9be3ff,#2aabee);color:#04263d}
+.in{display:block;width:100%;margin:6px 0;padding:8px 12px;border-radius:12px;border:2px solid var(--stoneEdge);background:var(--stone1);color:var(--text);font:inherit;font-size:16px}
+.in:focus-visible{outline:3px solid var(--gold2)}
+.tgbtn{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#fff;font-size:20px;padding:10px 18px;border-radius:14px;border:2px solid #14587f;
+  background:linear-gradient(180deg,#52c1ff,#2a9df0 55%,#1a7fd0);box-shadow:0 5px 0 #14587f,0 0 18px rgba(42,171,238,.55);text-shadow:0 1px 0 #0d4466;margin:12px 0 14px}
+.tgbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #14587f}
+.tgbtn svg.i{width:30px;height:30px;fill:#fff;stroke:none;filter:none}
+.accbox,.pbox{padding:16px}
+.accbox h3{margin:0;font-size:24px;line-height:1.3}
+.msg{margin:8px 0;font-size:15px}
+.msg.err{color:#c4161c}.msg.ok{color:#1c7d2d}
+.note{color:var(--muted);font-size:14px;margin:8px 0}
+.lbl{display:block;margin-top:10px;color:var(--muted);font-size:15px}
+.regp .in,.cta .in{text-align:start}
+.cta form,.regp form{text-align:start}
+.prow{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:2px solid var(--line);font-size:15px}
+.prow .g{flex:1;min-width:0;overflow-wrap:anywhere}
+.prow .chip{margin:0;padding:0 10px;font-size:14px}
+.pbox{margin-bottom:12px}
+.pbox h3{margin:0 0 4px;font-size:20px}
+.pbox .seg{margin:6px 0 10px}
+.ctrl .chip{white-space:nowrap;padding:2px 9px;font-size:14px}
+.ctrl{gap:6px}
+.logo{font-size:28px}
+
+.embers{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.embers i{position:absolute;bottom:-10px;left:var(--x);width:4px;height:4px;border-radius:50%;background:#ffb347;opacity:0;animation:ember 9s linear var(--w) infinite;will-change:transform,opacity}
+@keyframes ember{0%{transform:translate3d(0,0,0);opacity:0}10%{opacity:.9}100%{transform:translate3d(30px,-105vh,0);opacity:0}}
+:root[data-theme="dark"] .embers{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .embers{display:none}}
+.tcard{display:block;padding:12px 14px;margin-bottom:10px;text-decoration:none;color:var(--text)}
+.tc1{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:20px}
+.tag.ok{background:#2f9e3a;border-color:#1c6b25}.tag.st{background:#2a7fd0;border-color:#14587f}.tag.cl{background:#777;border-color:#444}
+.sub{font-size:20px;margin:14px 0 6px}
+.live{margin-bottom:12px}
+.live iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+.row2{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.row2 .in{margin:0;flex:1}
+.lgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:620px){.lgrid{grid-template-columns:repeat(3,1fr)}}
+.lcard{display:flex;flex-direction:column}
+.lph{aspect-ratio:4/3;background:#2a2230}
+.lph img{width:100%;height:100%;object-fit:cover;display:block}
+.lb{padding:8px 10px 10px;display:flex;flex-direction:column;gap:4px;flex:1}
+.lb b{font-size:20px;line-height:1.3}
+.price{color:#1c7d2d;font-size:17px}
+.lb p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.lbtns{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+.lbtns .btn,.lbtns .chip{flex:1;text-align:center;padding:4px 6px;font-size:15px;margin:0}
+.gal{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin-bottom:6px}
+.gal{align-items:flex-start}
+.gal img{width:88%;height:230px;flex:none;scroll-snap-align:center;border-radius:12px;object-fit:cover}
+.ldet{padding:14px;overflow-y:auto;max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px)}
+.kv{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:2px solid var(--line)}
+.thumbs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;border:2px solid var(--stoneEdge)}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pre{white-space:pre-wrap;font-size:13px;direction:ltr;text-align:left;margin:6px 0;max-height:240px;overflow:auto}
+footer .chip{margin-top:8px}
+html.lite .gold{background:none;color:#ffd24a;filter:none;text-shadow:0 2px 0 #5d3400,0 0 2px #3d2300}
+html.lite .meteor,html.lite .embers,html.lite .banner::after,html.lite .tm.w::after{display:none!important}
+html.lite body::before{background:var(--bglite)}
+html.lite .stone,html.lite .plank,html.lite .banner,html.lite .chip,html.lite .btn{box-shadow:0 3px 0 rgba(0,0,0,.3)}
+html.lite *{animation:none!important;transition:none!important}
 </style>
 </head>
 <body>
+<div class="embers" aria-hidden="true"><i style="--x:8%;--w:0s"></i><i style="--x:25%;--w:2s"></i><i style="--x:42%;--w:4s"></i><i style="--x:60%;--w:1s"></i><i style="--x:78%;--w:3s"></i><i style="--x:92%;--w:5s"></i></div>
 <svg class="defs" aria-hidden="true">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbd0"/><stop offset=".3" stop-color="#ffe36b"/><stop offset=".55" stop-color="#f2a900"/><stop offset=".6" stop-color="#c47a00"/><stop offset="1" stop-color="#ffd24a"/></linearGradient>
@@ -209,12 +274,15 @@ html[dir="ltr"] .banner::before{background:linear-gradient(90deg,rgba(0,0,0,.6) 
   <symbol id="i-castle" viewBox="0 0 48 48"><path d="M5 43V15h8v5h5v-5h12v5h5v-5h8v28z"/><path d="M19 43V34a5 5 0 0 1 10 0v9z" fill="#4a2c00"/><path d="M9 23v5M39 23v5" stroke-width="3" fill="none"/><path d="M9 15V5l9 3.5L9 12" fill="url(#gr)" stroke-width="2"/><path d="M8 17v24" stroke="#fff" stroke-opacity=".55" stroke-width="2" fill="none"/></symbol>
   <symbol id="i-chest" viewBox="0 0 48 48"><path d="M5 22a8 8 0 0 1 8-8h22a8 8 0 0 1 8 8z" fill="url(#gw)"/><path d="M5 22h38v21H5z" fill="url(#gw)"/><path d="M13 14v29M35 14v29" stroke-width="4.5" fill="none"/><path d="M13 14v29M35 14v29" stroke="#ffd24a" stroke-width="2" fill="none"/><path d="M5 30h38" fill="none"/><rect x="19.5" y="25" width="9" height="11" rx="2"/><circle cx="24" cy="30" r="2" fill="#4a2c00" stroke="none"/><path d="M9 17l10-1" stroke="#fff" stroke-opacity=".6" stroke-width="2" fill="none"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 48 48"><path d="M28 2L9 27h12l-4 19 22-29H26z" fill="url(#gz)" stroke="#05304a"/></symbol>
+  <symbol id="i-user" viewBox="0 0 48 48"><circle cx="24" cy="15" r="9"/><path d="M6 44c0-11 8-17 18-17s18 6 18 17z"/></symbol>
+  <symbol id="i-tg" viewBox="0 0 48 48"><path d="M43 6L5 21c-1.6.6-1.5 2.1 0 2.6l9.6 3 3.7 11.4c.4 1.2 1.6 1.4 2.4.6l5.4-5 9.4 6.9c1.2.9 2.6.2 2.9-1.3L46 8.6C46.3 6.8 44.8 5.5 43 6zM18.3 26.5L38 13.8 22.6 29.3 21.6 36z"/></symbol>
   <symbol id="i-star" viewBox="0 0 48 48"><path d="M24 3l6.2 13.4 14.5 1.8-10.7 10 2.8 14.4L24 35l-12.8 7.6L14 28.2 3.3 18.2l14.5-1.8z"/><path d="M24 9l-4 9-8 1" stroke="#fff" stroke-opacity=".7" stroke-width="2" fill="none"/></symbol>
 </svg>
 <div class="wrap">
 <header class="plank">
   <h1 class="logo"><a href="#tournaments"><svg class="i"><use href="#i-shield"/></svg><span class="gold" data-k="name">وارهولد</span></a></h1>
   <div class="ctrl">
+    <a class="chip" id="accbtn" href="#account" aria-label="account"><svg class="i"><use href="#i-user"/></svg></a>
     <button class="chip" id="lang" type="button">EN</button>
     <button class="chip" id="t" type="button" data-k="night">حالت شب</button>
   </div>
@@ -224,221 +292,630 @@ html[dir="ltr"] .banner::before{background:linear-gradient(90deg,rgba(0,0,0,.6) 
 <section data-v="tournaments">
   <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" data-k="pick">تورنمنت‌ها</span></h2>
   <a class="banner" href="#solo"><svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="bs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b0f4a"/><stop offset=".55" stop-color="#3a1c8c"/><stop offset="1" stop-color="#0b2a6b"/></linearGradient><radialGradient id="bsg"><stop offset="0" stop-color="#7fe9ff" stop-opacity=".85"/><stop offset="1" stop-color="#7fe9ff" stop-opacity="0"/></radialGradient><filter id="bf"><feGaussianBlur stdDeviation="3"/></filter></defs><rect width="400" height="180" fill="url(#bs)"/><circle cx="85" cy="95" r="125" fill="url(#bsg)"/><polygon points="60,0 120,0 230,180 -50,180" fill="#bff3ff" opacity=".1"/><g fill="none" stroke-linejoin="round"><polyline points="330,0 308,62 338,64 296,134 322,136 276,180" stroke="#29b6ff" stroke-width="9" opacity=".6" filter="url(#bf)"/><polyline points="330,0 308,62 338,64 296,134 322,136 276,180" stroke="#eafcff" stroke-width="3"/><polyline points="210,0 198,42 216,44 190,96" stroke="#29b6ff" stroke-width="6" opacity=".6" filter="url(#bf)"/><polyline points="210,0 198,42 216,44 190,96" stroke="#eafcff" stroke-width="2.2"/></g><g fill="#fff"><circle cx="150" cy="24" r="1.6"/><circle cx="250" cy="150" r="1.4"/><circle cx="370" cy="110" r="1.6"/><circle cx="30" cy="30" r="1.3"/><circle cx="180" cy="160" r="1.2"/></g></svg><div class="bcont"><span class="tag" data-k="regOpen">ثبت‌نام باز</span><h3 class="gold" data-k="soloT">تورنمنت تک‌نفره</h3><p data-k="soloS">گروه‌های ۴ نفره · دو نفر برتر هر گروه صعود می‌کنند</p><span class="btn" data-k="open">ورود</span></div><svg class="i big"><use href="#i-shield"/></svg></a>
-  <a class="banner" href="#clanwar"><svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="bc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a0a10"/><stop offset=".55" stop-color="#9b1d1d"/><stop offset="1" stop-color="#ff8a2a"/></linearGradient><radialGradient id="bcg"><stop offset="0" stop-color="#ffd24a" stop-opacity=".9"/><stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/></radialGradient></defs><rect width="400" height="180" fill="url(#bc)"/><ellipse cx="200" cy="190" rx="260" ry="90" fill="url(#bcg)"/><use href="#i-castle" x="262" y="34" width="150" height="150" opacity=".3"/><use href="#i-castle" x="-30" y="58" width="120" height="120" opacity=".6"/><use href="#i-flame" x="150" y="100" width="56" height="56"/><use href="#i-flame" x="118" y="122" width="38" height="38" opacity=".9"/><g fill="#ffd24a"><circle cx="140" cy="60" r="1.8"/><circle cx="210" cy="40" r="1.5"/><circle cx="250" cy="90" r="1.6"/><circle cx="90" cy="30" r="1.4"/><circle cx="300" cy="20" r="1.6"/><circle cx="180" cy="70" r="1.3"/></g></svg><div class="bcont"><span class="tag" data-k="badge">زنده</span><h3 class="gold" data-k="clanT">جنگ کلن‌ها</h3><p data-k="clanS">حذفی ۱۶ یا ۳۲ کلن با پخش زنده</p><span class="btn" data-k="open">ورود</span></div><svg class="i big"><use href="#i-crown"/></svg></a>
+  <a class="banner" href="#clan"><svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="bc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a0a10"/><stop offset=".55" stop-color="#9b1d1d"/><stop offset="1" stop-color="#ff8a2a"/></linearGradient><radialGradient id="bcg"><stop offset="0" stop-color="#ffd24a" stop-opacity=".9"/><stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/></radialGradient></defs><rect width="400" height="180" fill="url(#bc)"/><ellipse cx="200" cy="190" rx="260" ry="90" fill="url(#bcg)"/><use href="#i-castle" x="262" y="34" width="150" height="150" opacity=".3"/><use href="#i-castle" x="-30" y="58" width="120" height="120" opacity=".6"/><use href="#i-flame" x="150" y="100" width="56" height="56"/><use href="#i-flame" x="118" y="122" width="38" height="38" opacity=".9"/><g fill="#ffd24a"><circle cx="140" cy="60" r="1.8"/><circle cx="210" cy="40" r="1.5"/><circle cx="250" cy="90" r="1.6"/><circle cx="90" cy="30" r="1.4"/><circle cx="300" cy="20" r="1.6"/><circle cx="180" cy="70" r="1.3"/></g></svg><div class="bcont"><span class="tag" data-k="badge">زنده</span><h3 class="gold" data-k="clanT">جنگ کلن‌ها</h3><p data-k="clanS">حذفی ۱۶ یا ۳۲ کلن با پخش زنده</p><span class="btn" data-k="open">ورود</span></div><svg class="i big"><use href="#i-crown"/></svg></a>
 </section>
 
-<section data-v="clanwar" hidden>
+<section data-v="tlist" hidden>
   <a class="chip back" href="#tournaments" data-k="back">بازگشت</a>
-  <h2 class="sign plank"><svg class="i"><use href="#i-swords"/></svg><span class="gold" data-k="live">جنگ زنده</span></h2>
-  <div class="stone">
-    <div class="player"><span class="badge" data-k="badge">زنده</span><p data-k="player">اینجا پخش زنده آپارات نمایش داده می‌شود</p></div>
-    <div class="score">
-      <div><b data-k="cx">کلن ایکس</b><span data-k="sx">۳۸ ستاره · ۹۲٪</span></div>
-      <div class="vs gold">VS</div>
-      <div><b data-k="cy">کلن وای</b><span data-k="sy">۳۵ ستاره · ۸۸٪</span></div>
-    </div>
-  </div>
-
-  <div class="row">
-    <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" data-k="board">جدول حذفی</span></h2>
-    <div class="seg">
-      <button class="chip" type="button" data-n="16" data-k="t16" aria-pressed="true">۱۶ تیم</button>
-      <button class="chip" type="button" data-n="32" data-k="t32" aria-pressed="false">۳۲ تیم</button>
-    </div>
-  </div>
-  <div class="arena" id="arena" role="button" tabindex="0"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket mini" id="bracket"></div></div><div class="hint" data-k="hint">برای مشاهده کامل جدول لمس کن</div></div>
-
-  <h2 class="sign plank"><svg class="i"><use href="#i-flame"/></svg><span class="gold" data-k="events">مسابقه‌های بعدی</span></h2>
-  <div class="stone">
-    <div class="event"><svg class="i"><use href="#i-swords"/></svg><b data-k="e1">نیمه‌نهایی ۱</b><span class="d" data-k="e1d">جمعه ۲۱:۰۰</span></div>
-    <div class="event"><svg class="i"><use href="#i-swords"/></svg><b data-k="e2">نیمه‌نهایی ۲</b><span class="d" data-k="e2d">شنبه ۲۱:۰۰</span></div>
-  </div>
+  <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" id="tlistTitle"></span></h2>
+  <div id="tlist"></div>
 </section>
 
-<section data-v="solo" hidden>
-  <a class="chip back" href="#tournaments" data-k="back">بازگشت</a>
-  <h2 class="sign plank"><svg class="i"><use href="#i-shield"/></svg><span class="gold" data-k="soloH">تورنمنت تک‌نفره</span></h2>
-  <div class="stone regp">
-    <div class="seg"><button class="chip" type="button" data-s="64" data-k="f64" aria-pressed="true">۶۴ نفر · ۱۶ گروه</button><button class="chip" type="button" data-s="128" data-k="f128" aria-pressed="false">۱۲۸ نفر · ۳۲ گروه</button></div>
-    <div class="regrow"><span data-k="regC">ثبت‌نام‌شده</span><b id="regnum"></b></div><div class="bar"><i></i></div>
-    <div class="rule"><svg class="i"><use href="#i-swords"/></svg><span data-k="rule1"></span></div>
-    <div class="rule"><svg class="i"><use href="#i-star"/></svg><span data-k="rule2"></span></div>
-    <div class="rule"><svg class="i"><use href="#i-gem"/></svg><span data-k="rule3"></span></div>
-    <a class="btn" href="#solo" data-k="regBtn">ثبت‌نام در ربات</a>
-  </div>
-  <h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold" data-k="groupsT">مرحله گروهی</span></h2>
-  <div class="groups" id="groups"></div>
-  <div class="more"><button class="chip" id="toggleG" type="button"></button></div>
-  <h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold" data-k="koT">مرحله حذفی</span></h2>
-  <div class="arena" id="arenaSolo" role="button" tabindex="0"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket mini" id="bracketSolo"></div></div><div class="hint" data-k="hint">برای مشاهده کامل جدول لمس کن</div></div>
+<section data-v="tdetail" hidden>
+  <a class="chip back" id="tback" href="#tournaments" data-k="back">بازگشت</a>
+  <h2 class="sign plank"><svg class="i"><use href="#i-swords"/></svg><span class="gold" id="tdTitle"></span></h2>
+  <div id="tdLive"></div>
+  <div class="stone regp" id="tdReg"></div>
+  <div id="tdBody"></div>
 </section>
 
 <section data-v="clans" hidden>
   <h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold" data-k="clans">کلن‌ها</span></h2>
-  <div class="clans">
-    <div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-crown"/></svg></div><div class="t"><h3 data-k="cx">کلن ایکس</h3><p data-k="m1">سطح ۱۸ · ۴۸ عضو</p></div><a class="btn" href="#clans" data-k="join">ورود به کلن</a></div>
-    <div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-flame"/></svg></div><div class="t"><h3 data-k="cy">کلن وای</h3><p data-k="m2">سطح ۱۵ · ۴۵ عضو</p></div><a class="btn" href="#clans" data-k="join">ورود به کلن</a></div>
-    <div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-gem"/></svg></div><div class="t"><h3 data-k="cz">کلن زد</h3><p data-k="m3">سطح ۱۲ · ۳۹ عضو</p></div><a class="btn" href="#clans" data-k="join">ورود به کلن</a></div>
-  </div>
+  <div class="clans" id="clanlist"></div>
   <h2 class="sign plank"><svg class="i"><use href="#i-castle"/></svg><span class="gold" data-k="own">کلن داری؟</span></h2>
-  <div class="stone cta">
-    <p data-k="ownp">کلنت را از طریق ربات تلگرام ثبت کن تا بعد از تأیید در این لیست بیاید.</p>
-    <a class="btn" href="#clans" data-k="reg">ثبت کلن در ربات</a>
-  </div>
+  <div class="stone cta" id="clanform"></div>
 </section>
 
 <section data-v="store" hidden>
-  <h2 class="sign plank"><svg class="i"><use href="#i-chest"/></svg><span class="gold" data-k="navS">فروشگاه</span></h2>
-  <div class="stone soonbox">
-    <svg class="i"><use href="#i-chest"/></svg>
-    <h3 class="gold" data-k="storeT">به زودی افتتاح می‌شود</h3>
-    <p data-k="storeP">اکانت و آفر بازی با پرداخت کارت‌به‌کارت، به‌زودی اینجا.</p>
+  <h2 class="sign plank"><svg class="i"><use href="#i-chest"/></svg><span class="gold" data-k="storeT">فروشگاه اکانت</span></h2>
+  <div class="row2"><select class="in" id="thf" aria-label="Town Hall"></select><a class="btn" id="storeSell" href="#sell" data-k="sellBtn" hidden>ثبت آگهی</a></div>
+  <div class="lgrid" id="lgrid"></div>
+</section>
+
+<section data-v="sell" hidden>
+  <a class="chip back" href="#store" data-k="back">بازگشت</a>
+  <h2 class="sign plank"><svg class="i"><use href="#i-chest"/></svg><span class="gold" data-k="sellT">ثبت آگهی اکانت</span></h2>
+  <div class="stone accbox" id="sellBox"></div>
+</section>
+
+<section data-v="account" hidden>
+  <h2 class="sign plank"><svg class="i"><use href="#i-user"/></svg><span class="gold" data-k="accT">حساب کاربری</span></h2>
+  <div class="stone accbox">
+    <p class="note" id="acc-off" hidden data-k="accOff"></p>
+    <div id="acc-login" hidden>
+      <p data-k="accHow"></p>
+      <a class="tgbtn" id="tglogin" href="#account" target="_blank" rel="noopener"><svg class="i"><use href="#i-tg"/></svg><span data-k="tgLogin"></span></a>
+      <label class="lbl" for="code" data-k="codeL"></label>
+      <input class="in" id="code" inputmode="numeric" maxlength="8" autocomplete="one-time-code" dir="ltr" placeholder="12345678">
+      <button class="btn" id="codeGo" type="button" data-k="codeGo"></button>
+      <p class="msg err" id="loginMsg"></p>
+    </div>
+    <div id="acc-in" hidden>
+      <h3 id="meName"></h3><p class="note" id="meSub"></p><div id="meInfo"></div>
+      <a class="btn" id="toPanel" href="#panel" hidden data-k="panelBtn"></a>
+      <button class="chip" id="logout" type="button" data-k="logout"></button>
+    </div>
   </div>
+</section>
+
+<section data-v="panel" hidden>
+  <a class="chip back" href="#account" data-k="back">بازگشت</a>
+  <h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold" data-k="panelT">پنل مدیریت</span></h2>
+  <div id="panelBody"></div>
 </section>
 </main>
 
-<footer data-k="foot">وارهولد · سایت مستقل و غیررسمی هواداران</footer>
+<footer><span data-k="foot">وارهولد · سایت مستقل و غیررسمی هواداران</span><br><button class="chip" id="liteBtn" type="button"></button></footer>
 </div>
 
-<div class="modal" id="modal" hidden role="dialog" aria-modal="true"><div class="mbox"><button class="chip" id="close" type="button" data-k="close">بستن</button><div class="arena"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket" id="bracketFull"></div></div></div></div></div>
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true"><div class="mbox"><button class="chip" id="close" type="button" data-k="close">بستن</button><div class="arena"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div><div class="scroll"><div class="bracket" id="bracketFull"></div></div></div></div></div>
+<div class="modal" id="lmodal" hidden role="dialog" aria-modal="true"><div class="mbox"><button class="chip" id="lclose" type="button" data-k="close">بستن</button><div class="stone ldet" id="ldet"></div></div></div>
 
 <nav class="plank">
   <a class="tab" href="#tournaments" data-r="tournaments"><svg class="i"><use href="#i-trophy"/></svg><span data-k="navT">تورنمنت</span></a>
   <a class="tab" href="#clans" data-r="clans"><svg class="i"><use href="#i-crown"/></svg><span data-k="navC">کلن‌ها</span></a>
-  <a class="tab" href="#store" data-r="store"><span class="soon" data-k="soon">به زودی</span><svg class="i"><use href="#i-chest"/></svg><span data-k="navS2">فروشگاه</span></a>
+  <a class="tab" href="#store" data-r="store"><svg class="i"><use href="#i-chest"/></svg><span data-k="navS">فروشگاه</span></a>
 </nav>
 
 <script>
 (function(){
-  var fa={name:"وارهولد",night:"حالت شب",day:"حالت روز",live:"جنگ زنده",badge:"زنده",player:"اینجا پخش زنده آپارات نمایش داده می‌شود",
-  cx:"کلن ایکس",cy:"کلن وای",cz:"کلن زد",sx:"۳۸ ستاره · ۹۲٪",sy:"۳۵ ستاره · ۸۸٪",board:"جدول حذفی",t16:"۱۶ تیم",t32:"۳۲ تیم",
-  events:"مسابقه‌های بعدی",e1:"نیمه‌نهایی ۱",e1d:"جمعه ۲۱:۰۰",e2:"نیمه‌نهایی ۲",e2d:"شنبه ۲۱:۰۰",clans:"کلن‌ها",
-  m1:"سطح ۱۸ · ۴۸ عضو",m2:"سطح ۱۵ · ۴۵ عضو",m3:"سطح ۱۲ · ۳۹ عضو",join:"ورود به کلن",own:"کلن داری؟",
-  ownp:"کلنت را از طریق ربات تلگرام ثبت کن تا بعد از تأیید در این لیست بیاید.",reg:"ثبت کلن در ربات",
-  storeT:"به زودی افتتاح می‌شود",storeP:"اکانت و آفر بازی با پرداخت کارت‌به‌کارت، به‌زودی اینجا.",
-  foot:"وارهولد · سایت مستقل و غیررسمی هواداران",navT:"تورنمنت",navC:"کلن‌ها",navS:"فروشگاه",navS2:"فروشگاه",soon:"به زودی",
-  r64:"دور ۶۴",r32:"دور ۳۲",r16:"دور ۱۶",qf:"یک‌چهارم نهایی",sf:"نیمه‌نهایی",fin:"فینال",tbd:"مشخص نشده",clan:"کلن ",pl:"بازیکن ",
-  hint:"برای مشاهده کامل جدول لمس کن",close:"بستن",
+  var fa={name:"وارهولد",night:"حالت شب",day:"حالت روز",back:"بازگشت",hint:"برای مشاهده کامل جدول لمس کن",close:"بستن",
+  foot:"وارهولد · سایت مستقل و غیررسمی هواداران",navT:"تورنمنت",navC:"کلن‌ها",navS:"فروشگاه",liteOn:"حالت سبک: روشن",liteOff:"حالت سبک: خاموش",
   pick:"تورنمنت‌ها",soloT:"تورنمنت تک‌نفره",soloS:"گروه‌های ۴ نفره · دو نفر برتر هر گروه صعود می‌کنند",clanT:"جنگ کلن‌ها",clanS:"حذفی ۱۶ یا ۳۲ کلن با پخش زنده",
-  open:"ورود",regOpen:"ثبت‌نام باز",back:"بازگشت",soloH:"تورنمنت تک‌نفره",regC:"ثبت‌نام‌شده",f64:"۶۴ نفر · ۱۶ گروه",f128:"۱۲۸ نفر · ۳۲ گروه",
-  rule1:"هر گروه ۴ نفره است و همه با هم بازی می‌کنند",rule2:"دو نفر اول هر گروه به مرحله حذفی صعود می‌کنند",
-  rule3:"تعداد گروه‌ها به ثبت‌نام‌ها بستگی دارد: تا ۶۴ نفر ۱۶ گروه، تا ۱۲۸ نفر ۳۲ گروه",regBtn:"ثبت‌نام در ربات",
-  groupsT:"مرحله گروهی",grp:"گروه ",showAll:"نمایش همه گروه‌ها",showLess:"نمایش کمتر",koT:"مرحله حذفی"};
-  var en={name:"Warhold",night:"Night",day:"Day",live:"Live war",badge:"LIVE",player:"The Aparat live stream will appear here",
-  cx:"Clan X",cy:"Clan Y",cz:"Clan Z",sx:"38 stars · 92%",sy:"35 stars · 88%",board:"Knockout bracket",t16:"16 teams",t32:"32 teams",
-  events:"Next matches",e1:"Semi-final 1",e1d:"Fri 9:00 PM",e2:"Semi-final 2",e2d:"Sat 9:00 PM",clans:"Clans",
-  m1:"Level 18 · 48 members",m2:"Level 15 · 45 members",m3:"Level 12 · 39 members",join:"Join clan",own:"Own a clan?",
-  ownp:"Register your clan through the Telegram bot and it will appear here after approval.",reg:"Register in bot",
-  storeT:"Opening soon",storeP:"Game accounts and offers with card-to-card payment, coming here soon.",
-  foot:"Warhold · Unofficial fan site",navT:"Tournaments",navC:"Clans",navS:"Store",navS2:"Store",soon:"Soon",
-  r64:"Round of 64",r32:"Round of 32",r16:"Round of 16",qf:"Quarter-finals",sf:"Semi-finals",fin:"Final",tbd:"TBD",clan:"Clan ",pl:"Player ",
-  hint:"Tap to view the full bracket",close:"Close",
-  pick:"Tournaments",soloT:"Solo tournament",soloS:"Groups of 4 · top two of each group advance",clanT:"Clan wars",clanS:"16 or 32 clan knockout with live stream",
-  open:"Enter",regOpen:"Registration open",back:"Back",soloH:"Solo tournament",regC:"Registered",f64:"64 players · 16 groups",f128:"128 players · 32 groups",
-  rule1:"Each group has 4 players who all play each other",rule2:"The top two of each group advance to the knockout stage",
-  rule3:"Groups depend on registrations: up to 64 players = 16 groups, up to 128 = 32 groups",regBtn:"Register in bot",
-  groupsT:"Group stage",grp:"Group ",showAll:"Show all groups",showLess:"Show less",koT:"Knockout stage"};
+  open:"ورود",regOpen:"ثبت‌نام باز",badge:"زنده",tlSolo:"تورنمنت‌های تک‌نفره",tlClan:"تورنمنت‌های کلنی",noT:"هنوز تورنمنتی ساخته نشده.",
+  stReg:"ثبت‌نام باز",stClosed:"ثبت‌نام بسته",stStarted:"شروع شده",regC:"ثبت‌نام‌شده",
+  rule1:"هر گروه ۴ نفره است و همه با هم بازی می‌کنند",rule2:"دو نفر اول هر گروه به مرحله حذفی صعود می‌کنند",rule3:"بعد از پر شدن ظرفیت، قرعه‌کشی خودکار انجام می‌شود",
+  cr1:"صاحب کلن، کلن تأییدشده‌اش را ثبت می‌کند",cr2:"بعد از پر شدن ظرفیت، قرعه‌کشی خودکار انجام می‌شود",cr3:"بازی‌ها به‌صورت حذفی برگزار می‌شود",
+  needLogin:"برای ثبت‌نام اول با حساب تلگرامت وارد شو.",tgLogin:"ورود با تلگرام",gname:"نام اکانت در بازی",gtag:"تگ اکانت (مثل #2PP0LQ8)",regGo:"ثبت‌نام",
+  regDone:"ثبت‌نام شما انجام شد ✅",cancelReg:"لغو ثبت‌نام",regClosed:"ثبت‌نام بسته است.",started:"تورنمنت شروع شده است.",yourGroup:"گروه شما:",
+  pickClan:"کلن خودت را انتخاب کن",noApprovedClan:"کلن تأییدشده‌ای نداری؛ اول از بخش کلن‌ها ثبتش کن.",regClanGo:"ثبت کلن در تورنمنت",yourClanReg:"کلن شما ثبت شده:",seed:"سید",
+  groupsT:"مرحله گروهی",koT:"مرحله حذفی",grp:"گروه ",pl:"بازیکن ",regList:"ثبت‌نام‌شده‌ها",noReg:"هنوز کسی ثبت‌نام نکرده.",showAll:"نمایش همه گروه‌ها",showLess:"نمایش کمتر",
+  clansReg:"کلن‌های ثبت‌شده",liveShow:"▶ نمایش پخش زنده",
+  r64:"دور ۶۴",r32:"دور ۳۲",r16:"دور ۱۶",qf:"یک‌چهارم نهایی",sf:"نیمه‌نهایی",fin:"فینال",tbd:"مشخص نشده",clan:"کلن ",
+  clans:"کلن‌ها",lvl:"سطح",mem:"عضو",join:"ورود به کلن",noClans:"هنوز کلنی ثبت نشده.",own:"کلن داری؟",
+  cname:"نام کلن",ctag:"تگ کلن (مثل #2PP0LQ8)",clevel:"سطح کلن",cmembers:"تعداد اعضا",cdesc:"توضیح (اختیاری)",cgo:"ثبت کلن",cpend:"کلن بعد از تأیید ادمین تو لیست میاد.",
+  cstat_pending:"منتظر تأیید",cstat_approved:"تأیید شده",cstat_rejected:"رد شده",myClan:"کلن شما:",sent:"انجام شد.",
+  storeT:"فروشگاه اکانت",sellBtn:"ثبت آگهی",noListings:"هنوز آگهی‌ای نیست.",buy:"خرید (پیام به فروشنده)",details:"جزئیات",toman:"تومان",
+  thL:"تاون‌هال",expL:"لول",abilL:"ابلیتی",unitsL:"درصد مکس نیروها",mapL:"درصد مکس مپ",heroesL:"هیروها",descL:"توضیحات",sellerL:"فروشنده",tagL:"تگ",allTh:"همه تاون‌هال‌ها",priceL:"قیمت",
+  sellT:"ثبت آگهی اکانت",fetchBtn:"دریافت مشخصات از بازی",fetching:"در حال دریافت...",fetched:"مشخصات دریافت شد؛ ابلیتی‌ها و درصد مپ رو خودت وارد کن.",
+  fPrice:"قیمت (تومان)",fTh:"لول تاون‌هال",fExp:"لول اکانت",fAb:"تعداد ابلیتی",fAbMax:"تعداد ابلیتی مکس",fUnits:"درصد مکس نیروها (٪)",fMap:"درصد مکس مپ (٪ - دستی)",
+  fPhotos:"عکس‌ها (۱ تا ۴)",fDesc:"توضیحات",sellGo:"ثبت آگهی",sellNote:"آگهی بعد از تأیید ادمین تو فروشگاه نمایش داده می‌شود.",needUser:"برای فروش باید تو تلگرام یوزرنیم داشته باشی (Settings > Username) و یک بار ربات رو /start کنی.",
+  soldBtn:"فروخته شد",delBtn:"حذف",lstat_pending:"منتظر تأیید",lstat_approved:"فعال",
+  hero_Barbarian_King:"کینگ",hero_Archer_Queen:"کویین",hero_Grand_Warden:"وارد",hero_Royal_Champion:"چمپیون",hero_Minion_Prince:"مینیون پرنس",
+  accT:"حساب کاربری",accOff:"سرور وصل نیست؛ ورود و ثبت‌نام فعلاً در دسترس نیست.",accHow:"با حساب تلگرامت وارد شو: دکمه آبی رو بزن، ربات برات یه کد ۸ رقمی می‌فرسته. همون رو اینجا وارد کن.",
+  codeL:"کد ۸ رقمی",codeGo:"تأیید کد",logout:"خروج",panelBtn:"پنل مدیریت",roleOwner:"مالک",roleAdmin:"ادمین",roleUser:"کاربر",myRegs:"ثبت‌نام‌های من",myListings:"آگهی‌های من",
+  panelT:"پنل مدیریت",pTours:"تورنمنت‌ها",pNewT:"ساخت تورنمنت جدید",pName:"اسم تورنمنت",pType:"نوع",typeSolo:"تک‌نفره",typeClan:"کلنی",pCap:"ظرفیت",pCreate:"ساخت تورنمنت",
+  pOpen:"باز کردن ثبت‌نام",pClose:"بستن ثبت‌نام",pDraw:"قرعه‌کشی همین حالا",pReset:"ریست",pDel:"حذف",pLive:"لینک پخش زنده (آپارات / یوتیوب / توییچ)",pSetLive:"ذخیره لینک",pRegs:"لیست ثبت‌نام‌ها",
+  pPendingC:"کلن‌های منتظر تأیید",pApprovedC:"کلن‌های تأییدشده",pPendingL:"آگهی‌های منتظر تأیید",pApprovedL:"آگهی‌های فعال",pAdmins:"ادمین‌ها",pAddAdmin:"افزودن ادمین",pAdminId:"آیدی عددی تلگرام",
+  okB:"تأیید",noB:"رد",sure:"مطمئنی؟",pNone:"—"};
+  var en=Object.assign({},fa,{name:"Warhold",night:"Night",day:"Day",back:"Back",hint:"Tap to view the full bracket",close:"Close",foot:"Warhold · Unofficial fan site",
+  navT:"Tournaments",navC:"Clans",navS:"Store",liteOn:"Lite mode: on",liteOff:"Lite mode: off",pick:"Tournaments",soloT:"Solo tournament",soloS:"Groups of 4 · top two of each group advance",
+  clanT:"Clan wars",clanS:"16 or 32 clan knockout with live stream",open:"Enter",regOpen:"Registration open",badge:"LIVE",tlSolo:"Solo tournaments",tlClan:"Clan tournaments",noT:"No tournaments yet.",
+  stReg:"Registration open",stClosed:"Registration closed",stStarted:"Started",regC:"Registered",rule1:"Each group has 4 players who all play each other",rule2:"The top two of each group advance to the knockout stage",
+  rule3:"The draw runs automatically once all spots are filled",cr1:"Clan owners register their approved clan",cr2:"The draw runs automatically once all spots are filled",cr3:"Matches are played as a knockout",
+  needLogin:"Log in with Telegram first to register.",tgLogin:"Log in with Telegram",gname:"In-game account name",gtag:"Account tag (e.g. #2PP0LQ8)",regGo:"Register",regDone:"You are registered ✅",
+  cancelReg:"Cancel registration",regClosed:"Registration is closed.",started:"The tournament has started.",yourGroup:"Your group:",pickClan:"Pick your clan",
+  noApprovedClan:"You have no approved clan; register one in the Clans section first.",regClanGo:"Register clan",yourClanReg:"Your clan is registered:",seed:"Seed",groupsT:"Group stage",koT:"Knockout stage",
+  grp:"Group ",pl:"Player ",regList:"Registered",noReg:"No one has registered yet.",showAll:"Show all groups",showLess:"Show less",clansReg:"Registered clans",liveShow:"▶ Show live stream",
+  r64:"Round of 64",r32:"Round of 32",r16:"Round of 16",qf:"Quarter-finals",sf:"Semi-finals",fin:"Final",tbd:"TBD",clan:"Clan ",clans:"Clans",lvl:"Level",mem:"members",join:"Join clan",
+  noClans:"No clans registered yet.",own:"Own a clan?",cname:"Clan name",ctag:"Clan tag (e.g. #2PP0LQ8)",clevel:"Clan level",cmembers:"Members",cdesc:"Description (optional)",cgo:"Register clan",
+  cpend:"Your clan appears in the list after admin approval.",cstat_pending:"Pending",cstat_approved:"Approved",cstat_rejected:"Rejected",myClan:"Your clan:",sent:"Done.",
+  storeT:"Account store",sellBtn:"Post a listing",noListings:"No listings yet.",buy:"Buy (message seller)",details:"Details",toman:"Toman",thL:"Town Hall",expL:"Level",abilL:"Abilities",
+  unitsL:"Units max %",mapL:"Map max %",heroesL:"Heroes",descL:"Description",sellerL:"Seller",tagL:"Tag",allTh:"All Town Halls",priceL:"Price",sellT:"Post an account listing",
+  fetchBtn:"Fetch details from the game",fetching:"Fetching...",fetched:"Details fetched; enter abilities and map % yourself.",fPrice:"Price (Toman)",fTh:"Town Hall level",fExp:"Account level",
+  fAb:"Abilities count",fAbMax:"Max abilities count",fUnits:"Units max % (%)",fMap:"Map max % (manual)",fPhotos:"Photos (1 to 4)",fDesc:"Description",sellGo:"Post listing",
+  sellNote:"Your listing appears in the store after admin approval.",needUser:"You need a Telegram username to sell (Settings > Username) and must /start the bot once.",soldBtn:"Mark sold",delBtn:"Delete",
+  lstat_pending:"Pending",lstat_approved:"Active",hero_Barbarian_King:"Barbarian King",hero_Archer_Queen:"Archer Queen",hero_Grand_Warden:"Grand Warden",hero_Royal_Champion:"Royal Champion",
+  hero_Minion_Prince:"Minion Prince",accT:"Account",accOff:"Server is offline; login and registration are unavailable.",
+  accHow:"Log in with your Telegram account: tap the blue button, the bot sends you an 8-digit code, and you enter it here.",codeL:"8-digit code",codeGo:"Confirm code",logout:"Log out",
+  panelBtn:"Admin panel",roleOwner:"Owner",roleAdmin:"Admin",roleUser:"User",myRegs:"My registrations",myListings:"My listings"});
   function $(i){return document.getElementById(i)}
-  var els=document.querySelectorAll("[data-k]");
-  var r=document.documentElement,lb=$("lang"),tb=$("t"),L="fa",N=16,S=64,showAll=false,ctx=null;
-  var bk=$("bracket"),bks=$("bracketSolo"),modal=$("modal"),bkf=$("bracketFull"),arena=$("arena"),arenaS=$("arenaSolo"),groupsEl=$("groups"),tg=$("toggleG");
+  var r=document.documentElement,L="fa",API=(window.WARHOLD_API||""),TOKEN="",ST=null,ME=null,TD=null,STORE=null,CLANS=null,OVER=null,ROUTE="tournaments",CUR=0;
+  var LFILTER="",showAll=false,PHOTOS=[],LKMAX={},sellKey="",ctx=null,LIVEON=false;
+  var HEROES=["Barbarian King","Archer Queen","Grand Warden","Royal Champion","Minion Prince"];
+  try{TOKEN=localStorage.getItem("wh_token")||""}catch(e){}
+  function D(){return L==="fa"?fa:en}
   function dark(){var t=r.getAttribute("data-theme");return t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches}
-  function num(n){return n.toLocaleString(L==="fa"?"fa-IR":"en-US")}
-  function cfgClan(){return {n:N,kind:"clan"}}
-  function cfgSolo(){return {n:(S/4)*2,kind:"solo",D:1}}
+  function num(n){return Number(n).toLocaleString(L==="fa"?"fa-IR":"en-US")}
+  function esc(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function hname(n){return D()["hero_"+String(n).replace(/ /g,"_")]||n}
+  function api(path,body){
+    var o={headers:{"Content-Type":"application/json"}};
+    if(TOKEN)o.headers.Authorization="Bearer "+TOKEN;
+    if(body!==undefined){o.method="POST";o.body=JSON.stringify(body)}
+    return fetch(API+path,o).then(function(res){return res.json().catch(function(){return {}}).then(function(j){
+      if(!res.ok){var e=new Error(j.error||"error");e.status=res.status;throw e}return j})});
+  }
+  function saveToken(t){TOKEN=t||"";try{if(t)localStorage.setItem("wh_token",t);else localStorage.removeItem("wh_token")}catch(e){}}
+  function flash(id,text,ok){var e=$(id);if(e){e.textContent=text;e.className="msg "+(ok?"ok":"err")}}
+  function errMsg(e){return e.status?e.message:D().accOff}
+  function loginPrompt(){var d=D();return '<p class="msg">'+esc(d.needLogin)+'</p><a class="tgbtn" href="#account"><svg class="i"><use href="#i-tg"/></svg><span>'+esc(d.tgLogin)+'</span></a>'}
+  function roleName(x){var d=D();return x==="owner"?d.roleOwner:x==="admin"?d.roleAdmin:d.roleUser}
+
+  /* ---------- لودها ---------- */
+  function loadState(){return api("/api/state").then(function(s){ST=s},function(){ST=null})}
+  function loadMe(){
+    if(!TOKEN){ME=null;return Promise.resolve()}
+    return api("/api/me").then(function(m){ME=m},function(e){if(e.status===401)saveToken("");ME=null});
+  }
+  function loadTD(){return api("/api/tournament?id="+CUR).then(function(t){TD=t},function(){TD=null})}
+  function loadStore(){return api("/api/store").then(function(s){STORE=s.listings},function(){STORE=null})}
+  function loadClans(){return api("/api/clans").then(function(s){CLANS=s.clans},function(){CLANS=null})}
+  function refresh(){
+    var jobs=[loadState(),loadMe()];
+    if(ROUTE==="tdetail")jobs.push(loadTD());
+    if(ROUTE==="store")jobs.push(loadStore());
+    if(ROUTE==="clans")jobs.push(loadClans());
+    return Promise.all(jobs).then(function(){build();if(ROUTE==="panel")loadPanel()});
+  }
+
+  /* ---------- جدول حذفی ---------- */
   function draw(target,full,cfg){
-    var d=L==="fa"?fa:en,n=cfg.n,T=Math.log2(n),D=cfg.D!==undefined?cfg.D:T-2,pre=cfg.kind==="solo"?d.pl:d.clan,cur=[],i,k,rounds=[];
-    for(i=1;i<=n;i++)cur.push(i);
+    var d=D(),n=cfg.n,T=Math.log2(n),D0=cfg.D||0,pre=cfg.kind==="solo"?d.pl:d.clan,cur=[],i,k,rounds=[];
+    for(i=1;i<=n;i++)cur.push(cfg.blank||(cfg.names&&!cfg.names[i-1])?null:i);
     for(k=0;k<T;k++){
       var ms=[],nxt=[];
-      for(i=0;i<cur.length;i+=2){
-        var a=cur[i],b=cur[i+1],m={a:a,b:b};
-        if(k<D&&a&&b){
-          m.w=Math.min(a,b);
-          var ws=40+((a*3+b)%9),ls=Math.max(0,ws-1-((a+b)%7));
-          m.sa=a===m.w?ws:ls;m.sb=b===m.w?ws:ls;
-        }
-        ms.push(m);nxt.push(m.w||null);
-      }
+      for(i=0;i<cur.length;i+=2){ms.push({a:cur[i],b:cur[i+1]});nxt.push(null)}
       rounds.push(ms);cur=nxt;
     }
     var names={1:d.fin,2:d.sf,4:d.qf,8:d.r16,16:d.r32,32:d.r64};
+    function label(t){return cfg.names&&cfg.names[t-1]?cfg.names[t-1]:pre+num(t)}
     function mt(m){
       var h='<div class="m">';
-      [["a","sa"],["b","sb"]].forEach(function(p){
-        var t=m[p[0]],won=m.w&&m.w===t,lost=m.w&&t&&m.w!==t;
-        var cls='tm'+(won?" w":"")+(lost?" l":"")+(t?"":" n");
-        if(!full){h+='<div class="'+cls+'"><span class="nm">'+(t?num(t):"?")+'</span></div>';return}
-        h+='<div class="'+cls+'"><span class="nm">'+(won?'<svg class="i b"><use href="#i-bolt"/></svg>':"")+(t?pre+num(t):d.tbd)+'</span>'+
-          (m[p[1]]!==undefined?'<em><svg class="i"><use href="#i-star"/></svg>'+num(m[p[1]])+'</em>':"")+'</div>';
+      [m.a,m.b].forEach(function(t){
+        h+='<div class="tm'+(t?"":" n")+'"><span class="nm">'+(full?esc(t?label(t):d.tbd):(t?num(t):"?"))+'</span></div>';
       });
       return h+'</div>';
     }
-    function col(ms,cls,title){return '<div class="col '+cls+'"><h4>'+title+'</h4><div class="ms">'+ms.map(mt).join("")+'</div></div>'}
+    function col(ms,cls,title){return '<div class="col '+cls+'"><h4>'+esc(title)+'</h4><div class="ms">'+ms.map(mt).join("")+'</div></div>'}
     var left="",right="";
     for(k=0;k<T-1;k++){
       var ms2=rounds[k],h2=ms2.length/2;
       left+=col(ms2.slice(0,h2),"cl"+(k===0?" first":""),names[ms2.length]);
       right=col(ms2.slice(h2),"cr"+(k===0?" first":""),names[ms2.length])+right;
     }
-    var fin='<div class="col cf"><svg class="i trophy"><use href="#i-trophy"/></svg><h4>'+names[1]+'</h4><div class="ms">'+mt(rounds[T-1][0])+'</div></div>';
+    var fin='<div class="col cf"><svg class="i trophy"><use href="#i-trophy"/></svg><h4>'+esc(names[1])+'</h4><div class="ms">'+mt(rounds[T-1][0])+'</div></div>';
     target.innerHTML=left+fin+right;
     target.classList.toggle("dense",!full&&n>=64);
     if(full){var sc=target.parentNode;sc.scrollLeft=(sc.scrollWidth-sc.clientWidth)/2}
   }
-  function renderGroups(){
-    var d=L==="fa"?fa:en,G=S/4,show=showAll?G:Math.min(8,G),h="",g,k,pts=[9,6,3,0];
-    for(g=1;g<=show;g++){
-      h+='<div class="stone"><div class="gh plank">'+d.grp+num(g)+'</div>';
-      for(k=1;k<=4;k++){
-        h+='<div class="gr'+(k<=2?" q":"")+'"><span class="nm">'+(k<=2?'<svg class="i"><use href="#i-star"/></svg>':"")+d.pl+num(4*(g-1)+k)+'</span><b>'+num(pts[k-1])+'</b></div>';
-      }
-      h+='</div>';
+  function cfgT(t){
+    if(t.type==="solo")return {n:t.capacity/2,kind:"solo",blank:true};
+    var names=[];(t.clans||[]).forEach(function(c){if(c.seed)names[c.seed-1]=c.name});
+    return {n:t.capacity,kind:"clan",blank:t.phase!=="started",names:names};
+  }
+  function arenaHTML(id){
+    return '<div class="arena" data-arena="1" role="button" tabindex="0"><div class="sky"><i class="meteor"></i><i class="meteor"></i><i class="meteor"></i></div>'+
+      '<div class="scroll"><div class="bracket mini" id="'+id+'"></div></div><div class="hint">'+esc(D().hint)+'</div></div>';
+  }
+
+  /* ---------- صفحه‌ها ---------- */
+  function statusText(t){var d=D();return t.phase==="started"?d.stStarted:(t.reg_open?d.stReg:d.stClosed)}
+  function renderTList(){
+    var d=D(),type=ROUTE==="clan"?"clan":"solo",el=$("tlist");
+    $("tlistTitle").textContent=type==="clan"?d.tlClan:d.tlSolo;
+    if(!ST){el.innerHTML='<p class="note">'+esc(d.accOff)+'</p>';return}
+    var list=ST.tournaments.filter(function(t){return t.type===type}),h="";
+    if(!list.length)h='<div class="stone cta"><p>'+esc(d.noT)+'</p></div>';
+    list.forEach(function(t){
+      h+='<a class="stone tcard" href="#t-'+t.id+'"><div class="tc1"><b>'+esc(t.name)+'</b><span class="tag '+(t.phase==="started"?"st":(t.reg_open?"ok":"cl"))+'">'+esc(statusText(t))+'</span></div>'+
+        '<div class="bar"><i style="width:'+Math.min(100,t.count/t.capacity*100)+'%"></i></div><div class="note">'+esc(num(t.count))+' / '+esc(num(t.capacity))+'</div></a>';
+    });
+    el.innerHTML=h;
+  }
+  function regForm(t){
+    var d=D(),solo=t.type==="solo",mine=ME&&ME.regs.filter(function(x){return x.tid===t.id})[0],h="";
+    if(mine){
+      h='<p class="msg ok">'+esc(solo?d.regDone:d.yourClanReg)+(solo?'':' <b>'+esc(mine.clan)+'</b>')+(solo&&mine.group?' · '+esc(d.yourGroup)+' '+esc(num(mine.group)):'')+(!solo&&mine.seed?' · '+esc(d.seed)+' '+esc(num(mine.seed)):'')+'</p>';
+      if(t.phase==="registration")h+='<button class="chip" data-reg="cancel" type="button">'+esc(d.cancelReg)+'</button>';
+    }else if(t.phase!=="registration")h='<p class="msg">'+esc(d.started)+'</p>';
+    else if(!t.reg_open)h='<p class="msg">'+esc(d.regClosed)+'</p>';
+    else if(!ME)h=loginPrompt();
+    else if(solo)h='<label class="lbl" for="pg_name">'+esc(d.gname)+'</label><input class="in" id="pg_name" maxlength="30" autocomplete="off">'+
+      '<label class="lbl" for="pg_tag">'+esc(d.gtag)+'</label><input class="in" id="pg_tag" dir="ltr" maxlength="16" autocomplete="off" placeholder="#2PP0LQ8">'+
+      '<button class="btn" data-reg="go" type="button">'+esc(d.regGo)+'</button><p class="msg err" id="regMsg"></p>';
+    else{
+      var cl=ME.clans.filter(function(c){return c.status==="approved"});
+      if(!cl.length)h='<p class="msg">'+esc(d.noApprovedClan)+'</p><a class="btn" href="#clans">'+esc(d.clans)+'</a>';
+      else h='<label class="lbl" for="cl_pick">'+esc(d.pickClan)+'</label><select class="in" id="cl_pick">'+cl.map(function(c){return '<option value="'+esc(c.id)+'">'+esc(c.name)+' ('+esc(c.tag)+')</option>'}).join("")+'</select>'+
+        '<button class="btn" data-reg="goclan" type="button">'+esc(d.regClanGo)+'</button><p class="msg err" id="regMsg"></p>';
     }
-    groupsEl.innerHTML=h;
-    tg.textContent=showAll?d.showLess:d.showAll;
-    $("regnum").textContent=num(S)+" / "+num(S);
+    return h;
   }
+  function renderTDetail(){
+    var d=D(),reg=$("tdReg"),body=$("tdBody"),live=$("tdLive");
+    if(!ST||!TD||TD.id!==CUR){
+      reg.innerHTML='<p class="note">'+esc(ST?"...":d.accOff)+'</p>';body.innerHTML="";live.innerHTML="";$("tdTitle").textContent="";return;
+    }
+    var t=TD,solo=t.type==="solo",h,rules=solo?["rule1","rule2","rule3"]:["cr1","cr2","cr3"],ic=["swords","star","gem"];
+    $("tdTitle").textContent=t.name;
+    $("tback").href=solo?"#solo":"#clan";
+    live.innerHTML=t.live_url?(LIVEON?'<div class="stone live"><iframe src="'+esc(t.live_url)+'" allowfullscreen loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-presentation"></iframe></div>':
+      '<button class="chip" data-live="1" type="button">'+esc(d.liveShow)+'</button>'):"";
+    h='<div class="regrow"><span>'+esc(d.regC)+'</span><b>'+esc(num(t.count))+' / '+esc(num(t.capacity))+'</b></div><div class="bar"><i style="width:'+Math.min(100,t.count/t.capacity*100)+'%"></i></div>';
+    rules.forEach(function(k,i){h+='<div class="rule"><svg class="i"><use href="#i-'+ic[i]+'"/></svg><span>'+esc(d[k])+'</span></div>'});
+    reg.innerHTML=h+regForm(t);
+    var b="";
+    if(solo){
+      b+='<h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold">'+esc(d.groupsT)+'</span></h2><div class="groups">';
+      var more=false;
+      if(t.phase==="started"){
+        var gs=Object.keys(t.groups).map(Number).sort(function(x,y){return x-y});
+        gs.slice(0,showAll?gs.length:8).forEach(function(no){
+          b+='<div class="stone"><div class="gh plank">'+esc(d.grp+num(no))+'</div>';
+          t.groups[no].forEach(function(nm){b+='<div class="gr"><span class="nm">'+esc(nm)+'</span></div>'});
+          b+='</div>';
+        });
+        more=gs.length>8;
+      }else{
+        b+='<div class="stone" style="grid-column:1/-1"><div class="gh plank">'+esc(d.regList)+'</div>';
+        if(!t.players.length)b+='<div class="gr"><span>'+esc(d.noReg)+'</span></div>';
+        t.players.slice(0,30).forEach(function(p){b+='<div class="gr"><span class="nm">'+esc(p.name)+'</span></div>'});
+        if(t.players.length>30)b+='<div class="gr"><span>+ '+esc(num(t.players.length-30))+'</span></div>';
+        b+='</div>';
+      }
+      b+='</div>'+(more?'<div class="more"><button class="chip" data-more="1" type="button">'+esc(showAll?d.showLess:d.showAll)+'</button></div>':'');
+    }else{
+      b+='<h2 class="sign plank"><svg class="i"><use href="#i-crown"/></svg><span class="gold">'+esc(d.clansReg)+'</span></h2><div class="clans">';
+      if(!t.clans.length)b+='<div class="stone cta"><p>'+esc(d.noReg)+'</p></div>';
+      t.clans.forEach(function(c,i){
+        b+='<div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-'+["crown","flame","gem"][i%3]+'"/></svg></div><div class="t"><h3>'+esc(c.name)+'</h3><p>'+(c.seed?esc(d.seed)+' '+esc(num(c.seed))+' · ':'')+esc(d.lvl)+' '+esc(num(c.level))+'</p></div>'+
+          '<a class="btn" href="'+esc(c.link)+'" target="_blank" rel="noopener">'+esc(d.join)+'</a></div>';
+      });
+      b+='</div>';
+    }
+    b+='<h2 class="sign plank"><svg class="i"><use href="#i-trophy"/></svg><span class="gold">'+esc(d.koT)+'</span></h2>'+arenaHTML("bracketMini");
+    body.innerHTML=b;
+    draw($("bracketMini"),false,cfgT(t));
+  }
+  function renderClans(){
+    var d=D(),h="",list=CLANS,el=$("clanlist");
+    if(!ST||!list){el.innerHTML='<p class="note">'+esc(d.accOff)+'</p>';$("clanform").innerHTML="";return}
+    if(!list.length)h='<div class="stone cta"><p>'+esc(d.noClans)+'</p></div>';
+    list.forEach(function(c,i){
+      h+='<div class="stone clan"><div class="ic plank"><svg class="i"><use href="#i-'+["crown","flame","gem"][i%3]+'"/></svg></div><div class="t"><h3>'+esc(c.name)+'</h3><p>'+esc(d.lvl)+' '+esc(num(c.level))+' · '+esc(num(c.members))+' '+esc(d.mem)+'</p></div>'+
+        '<a class="btn" href="'+esc(c.link)+'" target="_blank" rel="noopener">'+esc(d.join)+'</a></div>';
+    });
+    el.innerHTML=h;
+    var f="";
+    if(!ME)f=loginPrompt();
+    else{
+      f='<label class="lbl" for="cl_name">'+esc(d.cname)+'</label><input class="in" id="cl_name" maxlength="30" autocomplete="off">'+
+        '<label class="lbl" for="cl_tag">'+esc(d.ctag)+'</label><input class="in" id="cl_tag" dir="ltr" maxlength="16" autocomplete="off" placeholder="#2PP0LQ8">'+
+        '<label class="lbl" for="cl_level">'+esc(d.clevel)+'</label><input class="in" id="cl_level" inputmode="numeric" maxlength="3" dir="ltr">'+
+        '<label class="lbl" for="cl_members">'+esc(d.cmembers)+'</label><input class="in" id="cl_members" inputmode="numeric" maxlength="2" dir="ltr">'+
+        '<label class="lbl" for="cl_desc">'+esc(d.cdesc)+'</label><input class="in" id="cl_desc" maxlength="200" autocomplete="off">'+
+        '<button class="btn" data-cl="go" type="button">'+esc(d.cgo)+'</button><p class="msg err" id="clMsg"></p><p class="note">'+esc(d.cpend)+'</p>';
+      f+=ME.clans.map(function(c){return '<p class="note">'+esc(d.myClan)+' '+esc(c.name)+' ('+esc(c.tag)+') — '+esc(d["cstat_"+c.status]||c.status)+'</p>'}).join("");
+    }
+    $("clanform").innerHTML=f;
+  }
+  function heroLine(l){
+    var map={};l.heroes.forEach(function(h){map[h.name]=h.level});
+    return HEROES.filter(function(n){return map[n]}).slice(0,3).map(function(n){return esc(hname(n))+' '+esc(num(map[n]))}).join(" · ");
+  }
+  function renderStore(){
+    var d=D(),el=$("lgrid"),sel=$("thf");
+    $("storeSell").hidden=!ST;
+    if(!ST||!STORE){el.innerHTML='<p class="note">'+esc(d.accOff)+'</p>';return}
+    var ths=[];STORE.forEach(function(l){if(ths.indexOf(l.th)<0)ths.push(l.th)});ths.sort(function(a,b){return b-a});
+    sel.innerHTML='<option value="">'+esc(d.allTh)+'</option>'+ths.map(function(t){return '<option value="'+t+'"'+(String(t)===LFILTER?" selected":"")+'>'+esc(d.thL)+' '+esc(num(t))+'</option>'}).join("");
+    var list=STORE.filter(function(l){return !LFILTER||String(l.th)===LFILTER}),h="";
+    if(!list.length)h='<div class="stone cta"><p>'+esc(d.noListings)+'</p></div>';
+    list.forEach(function(l){
+      h+='<div class="stone lcard"><div class="lph">'+(l.photos[0]?'<img src="'+esc(API+l.photos[0])+'" alt="" loading="lazy" decoding="async">':'')+'</div><div class="lb"><b>'+esc(d.thL)+' '+esc(num(l.th))+'</b>'+
+        '<span class="price">'+esc(num(l.price))+' '+esc(d.toman)+'</span><p>'+heroLine(l)+'</p>'+(l.units_percent!=null?'<p>'+esc(d.unitsL)+': '+esc(num(l.units_percent))+'٪</p>':'')+
+        '<div class="lbtns"><button class="chip" data-detail="'+l.id+'" type="button">'+esc(d.details)+'</button><a class="btn" href="https://t.me/'+esc(l.seller)+'" target="_blank" rel="noopener">'+esc(d.buy.split(" ")[0])+'</a></div></div></div>';
+    });
+    el.innerHTML=h;
+  }
+  function showListing(id){
+    var d=D(),l=(STORE||[]).filter(function(x){return x.id===id})[0];
+    if(!l)return;
+    function kv(a,b){return '<div class="kv"><span>'+esc(a)+'</span><b>'+b+'</b></div>'}
+    var h='<div class="gal">'+l.photos.map(function(p){return '<img src="'+esc(API+p)+'" alt="" decoding="async">'}).join("")+'</div>'+
+      '<h3 class="sub">'+esc(d.thL)+' '+esc(num(l.th))+' · '+esc(num(l.price))+' '+esc(d.toman)+'</h3><a class="tgbtn" href="https://t.me/'+esc(l.seller)+'" target="_blank" rel="noopener"><svg class="i"><use href="#i-tg"/></svg><span>'+esc(d.buy)+'</span></a>'+kv(d.tagL,'<span dir="ltr">'+esc(l.tag)+'</span>')+(l.exp_level?kv(d.expL,esc(num(l.exp_level))):'');
+    HEROES.forEach(function(n){var x=l.heroes.filter(function(y){return y.name===n})[0];if(x)h+=kv(hname(n),esc(num(x.level))+(x.max?' / '+esc(num(x.max)):''))});
+    if(l.abilities_max||l.abilities)h+=kv(d.abilL,esc(num(l.abilities))+' / '+esc(num(l.abilities_max)));
+    if(l.units_percent!=null)h+=kv(d.unitsL,esc(num(l.units_percent))+'٪');
+    if(l.map_percent!=null)h+=kv(d.mapL,esc(num(l.map_percent))+'٪');
+    if(l.description)h+='<p class="note">'+esc(l.description)+'</p>';
+    h+=kv(d.sellerL,'<span dir="ltr">@'+esc(l.seller)+'</span>');
+    $("ldet").innerHTML=h;$("lmodal").hidden=false;document.body.style.overflow="hidden";
+  }
+  function renderSell(){
+    var d=D(),el=$("sellBox"),key=L+(ME?ME.id+"|"+ME.username:"0")+(ST?"1":"0");
+    if(key===sellKey)return;
+    sellKey=key;
+    if(!ST){el.innerHTML='<p class="note">'+esc(d.accOff)+'</p>';return}
+    if(!ME){el.innerHTML=loginPrompt();return}
+    if(!ME.username){el.innerHTML='<p class="msg err">'+esc(d.needUser)+'</p>';return}
+    var h='<label class="lbl" for="s_tag">'+esc(d.tagL)+'</label><input class="in" id="s_tag" dir="ltr" maxlength="16" autocomplete="off" placeholder="#2PP0LQ8">'+
+      (ST.coc?'<button class="chip" data-sell="fetch" type="button">'+esc(d.fetchBtn)+'</button>':'')+'<p class="msg" id="fetchMsg"></p>'+
+      '<label class="lbl" for="s_price">'+esc(d.fPrice)+'</label><input class="in" id="s_price" inputmode="numeric" dir="ltr" maxlength="12">'+
+      '<label class="lbl" for="s_th">'+esc(d.fTh)+'</label><input class="in" id="s_th" inputmode="numeric" dir="ltr" maxlength="2">'+
+      '<label class="lbl" for="s_exp">'+esc(d.fExp)+'</label><input class="in" id="s_exp" inputmode="numeric" dir="ltr" maxlength="3"><h3 class="sub">'+esc(d.heroesL)+'</h3><div class="hgrid">';
+    HEROES.forEach(function(n,i){h+='<div><label class="lbl" for="s_h'+i+'">'+esc(hname(n))+'</label><input class="in" id="s_h'+i+'" inputmode="numeric" dir="ltr" maxlength="3"></div>'});
+    h+='</div><div class="hgrid"><div><label class="lbl" for="s_ab">'+esc(d.fAb)+'</label><input class="in" id="s_ab" inputmode="numeric" dir="ltr" maxlength="3"></div>'+
+      '<div><label class="lbl" for="s_abm">'+esc(d.fAbMax)+'</label><input class="in" id="s_abm" inputmode="numeric" dir="ltr" maxlength="3"></div>'+
+      '<div><label class="lbl" for="s_up">'+esc(d.fUnits)+'</label><input class="in" id="s_up" inputmode="numeric" dir="ltr" maxlength="3"></div>'+
+      '<div><label class="lbl" for="s_mp">'+esc(d.fMap)+'</label><input class="in" id="s_mp" inputmode="numeric" dir="ltr" maxlength="3"></div></div>'+
+      '<label class="lbl" for="s_desc">'+esc(d.fDesc)+'</label><input class="in" id="s_desc" maxlength="400" autocomplete="off">'+
+      '<label class="lbl" for="s_photos">'+esc(d.fPhotos)+'</label><input class="in" id="s_photos" type="file" accept="image/*" multiple><div class="thumbs" id="thumbs"></div>'+
+      '<button class="btn" data-sell="go" type="button">'+esc(d.sellGo)+'</button><p class="msg err" id="sellMsg"></p><p class="note">'+esc(d.sellNote)+'</p>';
+    el.innerHTML=h;PHOTOS=[];LKMAX={};
+  }
+  function renderAccount(){
+    var d=D(),inn=!!ME;
+    $("acc-off").hidden=!!ST;$("acc-login").hidden=!ST||inn;$("acc-in").hidden=!inn;
+    $("accbtn").classList.toggle("on",inn);
+    if(ST&&!inn)$("tglogin").href=ST.bot?"https://t.me/"+ST.bot+"?start=login":"#account";
+    if(!inn)return;
+    $("meName").textContent=ME.name||("ID "+ME.id);
+    $("meSub").textContent=(ME.username?"@"+ME.username+" · ":"")+roleName(ME.role);
+    var h="";
+    if(ME.regs.length)h+='<h3 class="sub">'+esc(d.myRegs)+'</h3>';
+    ME.regs.forEach(function(x){h+='<p class="note"><a href="#t-'+x.tid+'">'+esc(x.name)+'</a>'+(x.type==="solo"?(x.group?' · '+esc(d.yourGroup)+' '+esc(num(x.group)):''):' · '+esc(x.clan)+(x.seed?' · '+esc(d.seed)+' '+esc(num(x.seed)):''))+'</p>'});
+    ME.clans.forEach(function(c){h+='<p class="note">'+esc(d.myClan)+' '+esc(c.name)+' ('+esc(c.tag)+') — '+esc(d["cstat_"+c.status]||c.status)+'</p>'});
+    if(ME.listings.length)h+='<h3 class="sub">'+esc(d.myListings)+'</h3>';
+    ME.listings.forEach(function(l){
+      h+='<div class="prow"><span class="g">'+esc(l.tag)+' · '+esc(d.thL)+' '+esc(num(l.th))+' · '+esc(d["lstat_"+l.status]||l.status)+'</span>'+
+        (l.status==="approved"?'<button class="chip" data-lact="sold" data-id="'+l.id+'" type="button">'+esc(d.soldBtn)+'</button>':'')+
+        '<button class="chip" data-lact="delete" data-id="'+l.id+'" type="button">'+esc(d.delBtn)+'</button></div>';
+    });
+    $("meInfo").innerHTML=h;
+    $("toPanel").hidden=ME.role==="user";
+  }
+
+  /* ---------- پنل مدیریت ---------- */
+  function loadPanel(){
+    if(!ME||ME.role==="user"){go("account");return}
+    api("/api/admin/overview").then(function(o){OVER=o;renderPanel()},function(e){$("panelBody").innerHTML='<p class="msg err">'+esc(e.message)+'</p>'});
+  }
+  function capOptions(type){return (type==="clan"?[16,32]:[64,128]).map(function(v){return '<option value="'+v+'">'+num(v)+'</option>'}).join("")}
+  function renderPanel(){
+    var o=OVER,d=D(),own=o&&o.role==="owner",h="";
+    if(!o)return;
+    h+='<div class="stone pbox"><h3>'+esc(d.pNewT)+'</h3><label class="lbl" for="nt_name">'+esc(d.pName)+'</label><input class="in" id="nt_name" maxlength="40" autocomplete="off">'+
+      '<label class="lbl" for="nt_type">'+esc(d.pType)+'</label><select class="in" id="nt_type"><option value="solo">'+esc(d.typeSolo)+'</option><option value="clan">'+esc(d.typeClan)+'</option></select>'+
+      '<label class="lbl" for="nt_cap">'+esc(d.pCap)+'</label><select class="in" id="nt_cap">'+capOptions("solo")+'</select>'+
+      '<button class="btn" type="button" data-act="add_tournament">'+esc(d.pCreate)+'</button></div>';
+    h+='<div class="stone pbox"><h3>'+esc(d.pTours)+'</h3>';
+    if(!o.tournaments.length)h+='<p class="note">'+esc(d.pNone)+'</p>';
+    o.tournaments.forEach(function(t){
+      h+='<div class="prow"><span class="g"><b>'+esc(t.name)+'</b> · '+esc(t.type==="solo"?d.typeSolo:d.typeClan)+' · '+esc(num(t.count))+'/'+esc(num(t.capacity))+' · '+esc(statusText(t))+'</span></div><div class="seg">';
+      if(t.phase!=="started")h+='<button class="chip" type="button" data-act="set_reg" data-id="'+t.id+'" data-open="'+(t.reg_open?0:1)+'">'+esc(t.reg_open?d.pClose:d.pOpen)+'</button>';
+      if(own&&t.phase!=="started")h+='<button class="chip" type="button" data-act="draw" data-id="'+t.id+'" data-confirm="1">'+esc(d.pDraw)+'</button>';
+      if(own)h+='<button class="chip" type="button" data-act="reset" data-id="'+t.id+'" data-confirm="1">'+esc(d.pReset)+'</button>';
+      if(own||t.count===0)h+='<button class="chip" type="button" data-act="del_tournament" data-id="'+t.id+'" data-confirm="1">'+esc(d.pDel)+'</button>';
+      h+='<button class="chip" type="button" data-regs="'+t.id+'">'+esc(d.pRegs)+'</button></div>'+
+        '<input class="in" id="live_'+t.id+'" dir="ltr" placeholder="'+esc(d.pLive)+'" value="'+esc(t.live_url)+'"><button class="chip" type="button" data-act="set_live" data-id="'+t.id+'">'+esc(d.pSetLive)+'</button>'+
+        '<pre class="pre" id="regs_'+t.id+'" hidden></pre>';
+    });
+    h+='</div><div class="stone pbox"><h3>'+esc(d.pPendingC)+'</h3>';
+    if(!o.pendingClans.length)h+='<p class="note">'+esc(d.pNone)+'</p>';
+    o.pendingClans.forEach(function(c){
+      h+='<div class="prow"><span class="g">'+esc(c.name)+' · '+esc(c.tag)+' · '+esc(d.lvl)+' '+esc(num(c.level))+' · '+esc(num(c.members))+' '+esc(d.mem)+(c.description?' · '+esc(c.description):'')+'</span>'+
+        '<button class="chip" type="button" data-act="approve_clan" data-id="'+c.id+'">'+esc(d.okB)+'</button><button class="chip" type="button" data-act="reject_clan" data-id="'+c.id+'">'+esc(d.noB)+'</button></div>';
+    });
+    h+='</div><div class="stone pbox"><h3>'+esc(d.pPendingL)+'</h3>';
+    if(!o.pendingListings.length)h+='<p class="note">'+esc(d.pNone)+'</p>';
+    o.pendingListings.forEach(function(l){
+      h+='<div class="prow"><span class="g">'+esc(l.tag)+' · '+esc(d.thL)+' '+esc(num(l.th))+' · '+esc(num(l.price))+' '+esc(d.toman)+' · @'+esc(l.seller)+'<div class="thumbs">'+l.photos.map(function(p){return '<img src="'+esc(API+p)+'" alt="" loading="lazy">'}).join("")+'</div>'+
+        '<span class="note">'+heroLine(l)+' · '+esc(d.abilL)+' '+esc(num(l.abilities))+'/'+esc(num(l.abilities_max))+(l.description?' · '+esc(l.description):'')+'</span></span>'+
+        '<button class="chip" type="button" data-act="approve_listing" data-id="'+l.id+'">'+esc(d.okB)+'</button><button class="chip" type="button" data-act="reject_listing" data-id="'+l.id+'">'+esc(d.noB)+'</button></div>';
+    });
+    h+='</div>';
+    if(own){
+      h+='<div class="stone pbox"><h3>'+esc(d.pApprovedC)+'</h3>';
+      o.approvedClans.forEach(function(c){h+='<div class="prow"><span class="g">'+esc(c.name)+' · '+esc(c.tag)+'</span><button class="chip" type="button" data-act="del_clan" data-id="'+c.id+'" data-confirm="1">'+esc(d.pDel)+'</button></div>'});
+      h+='</div><div class="stone pbox"><h3>'+esc(d.pApprovedL)+'</h3>';
+      o.approvedListings.forEach(function(l){h+='<div class="prow"><span class="g">'+esc(l.tag)+' · '+esc(d.thL)+' '+esc(num(l.th))+' · @'+esc(l.seller)+'</span><button class="chip" type="button" data-act="del_listing" data-id="'+l.id+'" data-confirm="1">'+esc(d.pDel)+'</button></div>'});
+      h+='</div><div class="stone pbox"><h3>'+esc(d.pAdmins)+'</h3>';
+      o.admins.forEach(function(id){h+='<div class="prow"><span class="g">'+esc(id)+'</span><button class="chip" type="button" data-act="rm_admin" data-id="'+esc(id)+'" data-confirm="1">'+esc(d.pDel)+'</button></div>'});
+      h+='<label class="lbl" for="adm_id">'+esc(d.pAdminId)+'</label><input class="in" id="adm_id" inputmode="numeric" dir="ltr" maxlength="15"><button class="btn" type="button" data-act="add_admin">'+esc(d.pAddAdmin)+'</button></div>';
+    }
+    $("panelBody").innerHTML=h;
+  }
+
+  /* ---------- ساخت صفحه فعلی ---------- */
   function build(){
-    draw(bk,false,cfgClan());draw(bks,false,cfgSolo());renderGroups();
-    if(!modal.hidden&&ctx)draw(bkf,true,ctx);
+    renderAccount();
+    switch(ROUTE){
+      case "solo":case "clan":renderTList();break;
+      case "tdetail":renderTDetail();break;
+      case "clans":renderClans();break;
+      case "store":renderStore();break;
+      case "sell":renderSell();break;
+      case "panel":if(OVER)renderPanel();break;
+    }
   }
-  function openFull(c){ctx=c;modal.hidden=false;document.body.style.overflow="hidden";draw(bkf,true,c);$("close").focus()}
-  function closeFull(){modal.hidden=true;document.body.style.overflow=""}
-  [[arena,cfgClan],[arenaS,cfgSolo]].forEach(function(p){
-    p[0].addEventListener("click",function(){openFull(p[1]())});
-    p[0].addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openFull(p[1]())}});
-  });
-  $("close").addEventListener("click",closeFull);
-  modal.addEventListener("click",function(e){if(e.target===modal)closeFull()});
-  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!modal.hidden)closeFull()});
+  var els=document.querySelectorAll("[data-k]");
   function render(){
-    var d=L==="fa"?fa:en;
+    var d=D();
     els.forEach(function(e){if(e.dataset.k==="night")return;e.textContent=d[e.dataset.k]});
-    arena.setAttribute("aria-label",d.hint);arenaS.setAttribute("aria-label",d.hint);
     tb.textContent=dark()?d.day:d.night;
+    $("liteBtn").textContent=r.classList.contains("lite")?d.liteOn:d.liteOff;
     r.lang=L;r.dir=L==="fa"?"rtl":"ltr";lb.textContent=L==="fa"?"EN":"فا";
+    sellKey="";
     build();
+    if(!$("modal").hidden&&ctx)draw($("bracketFull"),true,ctx);
   }
+  var lb=$("lang"),tb=$("t");
+
+  /* ---------- مودال جدول ---------- */
+  function openFull(){if(!TD)return;ctx=cfgT(TD);$("modal").hidden=false;document.body.style.overflow="hidden";draw($("bracketFull"),true,ctx);$("close").focus()}
+  function closeAll(){$("modal").hidden=true;$("lmodal").hidden=true;document.body.style.overflow=""}
+
+  /* ---------- عکس ---------- */
+  function processFile(file){
+    return new Promise(function(res,rej){
+      var fr=new FileReader();
+      fr.onload=function(){
+        var im=new Image();
+        im.onload=function(){
+          var s=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement("canvas");
+          c.width=Math.max(1,Math.round(im.width*s));c.height=Math.max(1,Math.round(im.height*s));
+          c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+          var q=0.72,u=c.toDataURL("image/jpeg",q);
+          while(u.length>600000&&q>0.3){q-=0.1;u=c.toDataURL("image/jpeg",q)}
+          res(u);
+        };
+        im.onerror=rej;im.src=fr.result;
+      };
+      fr.onerror=rej;fr.readAsDataURL(file);
+    });
+  }
+  function drawThumbs(){$("thumbs").innerHTML=PHOTOS.map(function(p){return '<img src="'+p+'" alt="">'}).join("")}
+  function val(id){var e=$(id);return e?e.value.trim():""}
+
+  /* ---------- رویدادها ---------- */
   lb.addEventListener("click",function(){L=L==="fa"?"en":"fa";render()});
   tb.addEventListener("click",function(){r.setAttribute("data-theme",dark()?"light":"dark");render()});
-  document.querySelectorAll("[data-n]").forEach(function(b){b.addEventListener("click",function(){
-    N=+b.dataset.n;document.querySelectorAll("[data-n]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});build();
-  })});
-  document.querySelectorAll("[data-s]").forEach(function(b){b.addEventListener("click",function(){
-    S=+b.dataset.s;showAll=false;document.querySelectorAll("[data-s]").forEach(function(x){x.setAttribute("aria-pressed",x===b)});build();
-  })});
-  tg.addEventListener("click",function(){showAll=!showAll;renderGroups()});
-  function route(){
-    var h=location.hash.slice(1);if(["tournaments","solo","clanwar","clans","store"].indexOf(h)<0)h="tournaments";
-    var tab=(h==="solo"||h==="clanwar")?"tournaments":h;
-    document.querySelectorAll("[data-v]").forEach(function(s){s.hidden=s.dataset.v!==h});
+  $("liteBtn").addEventListener("click",function(){
+    var on=!r.classList.contains("lite");r.classList.toggle("lite",on);
+    try{localStorage.setItem("wh_lite",on?"1":"0")}catch(e){}
+    render();
+  });
+  $("codeGo").addEventListener("click",function(){
+    api("/api/login",{code:$("code").value}).then(function(x){saveToken(x.token);ME=x.me;$("code").value="";$("loginMsg").textContent="";refresh()},
+      function(e){flash("loginMsg",errMsg(e),false)});
+  });
+  $("code").addEventListener("keydown",function(e){if(e.key==="Enter")$("codeGo").click()});
+  $("logout").addEventListener("click",function(){api("/api/logout",{}).catch(function(){}).then(function(){saveToken("");ME=null;OVER=null;sellKey="";build()})});
+  $("close").addEventListener("click",closeAll);
+  $("lclose").addEventListener("click",closeAll);
+  $("modal").addEventListener("click",function(e){if(e.target===$("modal"))closeAll()});
+  $("lmodal").addEventListener("click",function(e){if(e.target===$("lmodal"))closeAll()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeAll()});
+  $("thf").addEventListener("change",function(){LFILTER=$("thf").value;renderStore()});
+  $("tdBody").addEventListener("click",function(e){
+    if(e.target.closest("[data-more]")){showAll=!showAll;renderTDetail();return}
+    if(e.target.closest("[data-arena]"))openFull();
+  });
+  $("tdBody").addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target.closest("[data-arena]")){e.preventDefault();openFull()}});
+  function afterReg(p){return p.then(refresh,function(e){flash("regMsg",errMsg(e),false)})}
+  function regClick(e){
+    var b=e.target.closest("[data-reg]");
+    if(b){
+      if(b.dataset.reg==="cancel")afterReg(api("/api/cancel-registration",{tid:CUR}));
+      else if(b.dataset.reg==="go")afterReg(api("/api/register-player",{tid:CUR,game_name:val("pg_name"),game_tag:val("pg_tag")}));
+      else afterReg(api("/api/register-clan",{tid:CUR,clan_id:val("cl_pick")}));
+      return;
+    }
+    if(e.target.closest("[data-live]")){LIVEON=true;renderTDetail()}
+  }
+  $("tdReg").addEventListener("click",regClick);
+  $("tdLive").addEventListener("click",regClick);
+  $("clanform").addEventListener("click",function(e){
+    if(!e.target.closest("[data-cl]"))return;
+    api("/api/clans",{name:val("cl_name"),tag:val("cl_tag"),level:val("cl_level"),members:val("cl_members"),description:val("cl_desc")}).then(
+      function(){return loadMe().then(function(){build();flash("clMsg",D().sent,true)})},function(er){flash("clMsg",errMsg(er),false)});
+  });
+  $("lgrid").addEventListener("click",function(e){var b=e.target.closest("[data-detail]");if(b)showListing(+b.dataset.detail)});
+  $("sellBox").addEventListener("change",function(e){
+    if(e.target.id!=="s_photos")return;
+    var files=Array.prototype.slice.call(e.target.files).slice(0,4);PHOTOS=[];
+    files.reduce(function(p,f){return p.then(function(){return processFile(f).then(function(u){PHOTOS.push(u)},function(){})})},Promise.resolve()).then(drawThumbs);
+  });
+  $("sellBox").addEventListener("click",function(e){
+    var b=e.target.closest("[data-sell]");if(!b)return;
+    var d=D();
+    if(b.dataset.sell==="fetch"){
+      flash("fetchMsg",d.fetching,true);
+      api("/api/coc-lookup",{tag:val("s_tag")}).then(function(x){
+        $("s_tag").value=x.tag;$("s_th").value=x.th;$("s_exp").value=x.exp;
+        if(x.units_percent!=null)$("s_up").value=x.units_percent;
+        LKMAX={};x.heroes.forEach(function(h){LKMAX[h.name]=h.max;var i=HEROES.indexOf(h.name);if(i>=0)$("s_h"+i).value=h.level});
+        flash("fetchMsg",d.fetched,true);
+      },function(er){flash("fetchMsg",errMsg(er),false)});
+      return;
+    }
+    var heroes=[];HEROES.forEach(function(n,i){var v=val("s_h"+i);if(v)heroes.push({name:n,level:v,max:LKMAX[n]||0})});
+    api("/api/listings",{tag:val("s_tag"),price:val("s_price"),th:val("s_th"),exp_level:val("s_exp"),heroes:heroes,abilities:val("s_ab"),abilities_max:val("s_abm"),
+      units_percent:val("s_up"),map_percent:val("s_mp"),description:val("s_desc"),photos:PHOTOS}).then(function(){
+        sellKey="";go("account");},function(er){flash("sellMsg",errMsg(er),false)});
+  });
+  $("meInfo").addEventListener("click",function(e){
+    var b=e.target.closest("[data-lact]");if(!b)return;
+    if(b.dataset.lact==="delete"&&!window.confirm(D().sure))return;
+    api("/api/listing-action",{id:b.dataset.id,action:b.dataset.lact}).then(refresh,function(er){window.alert(er.message)});
+  });
+  $("panelBody").addEventListener("change",function(e){if(e.target.id==="nt_type")$("nt_cap").innerHTML=capOptions(e.target.value)});
+  $("panelBody").addEventListener("click",function(e){
+    var rb=e.target.closest("[data-regs]");
+    if(rb){
+      api("/api/admin/registrants?tid="+rb.dataset.regs).then(function(x){
+        var pre=$("regs_"+rb.dataset.regs);
+        pre.textContent=x.rows.map(function(p,i){return (i+1)+". "+p.name+" | "+p.tag+" | "+p.tg+(p.username?" @"+p.username:"")+" | "+p.id+(p.group?" | G"+p.group:"")+(p.seed?" | S"+p.seed:"")}).join("\n")||"-";
+        pre.hidden=!pre.hidden;
+      },function(er){window.alert(er.message)});
+      return;
+    }
+    var b=e.target.closest("[data-act]");if(!b)return;
+    var body={action:b.dataset.act};
+    if(b.dataset.id)body.id=b.dataset.id;
+    if(b.dataset.act==="set_reg")body.open=b.dataset.open==="1";
+    if(b.dataset.act==="add_tournament"){body.name=val("nt_name");body.type=val("nt_type");body.capacity=val("nt_cap")}
+    if(b.dataset.act==="set_live")body.url=val("live_"+b.dataset.id);
+    if(b.dataset.act==="add_admin")body.id=val("adm_id");
+    if(b.dataset.confirm&&!window.confirm(D().sure))return;
+    api("/api/admin/action",body).then(function(){
+      return Promise.all([loadState(),api("/api/admin/overview").then(function(o){OVER=o})]).then(function(){renderPanel()});
+    },function(er){window.alert(er.message)});
+  });
+
+  /* ---------- مسیریابی ---------- */
+  function go(h){
+    h=String(h).replace(/^#/,"");
+    try{if(location.hash.slice(1)!==h)history.pushState(null,"","#"+h)}catch(e){}
+    route(h);
+  }
+  function route(over){
+    var h=(typeof over==="string")?over:location.hash.slice(1),m=/^t-(\d+)$/.exec(h),sec;
+    if(m){ROUTE="tdetail";CUR=+m[1];sec="tdetail";if(TD&&TD.id!==CUR){TD=null;LIVEON=false}showAll=false}
+    else{
+      if(["tournaments","solo","clan","clans","store","sell","account","panel"].indexOf(h)<0)h="tournaments";
+      ROUTE=h;sec=(h==="solo"||h==="clan")?"tlist":h;
+    }
+    var tab=(ROUTE==="tdetail"||sec==="tlist")?"tournaments":(ROUTE==="sell"?"store":ROUTE);
+    document.querySelectorAll("[data-v]").forEach(function(s){s.hidden=s.dataset.v!==sec});
     document.querySelectorAll(".tab").forEach(function(a){a.classList.toggle("on",a.dataset.r===tab)});
     window.scrollTo(0,0);
+    refresh();
   }
-  window.addEventListener("hashchange",route);
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest("a[href^='#']");
+    if(!a||a.target)return;
+    var h=a.getAttribute("href");
+    if(!h||h.length<2)return;
+    e.preventDefault();go(h);
+  });
+  window.addEventListener("hashchange",function(){route()});
   render();route();
+
+  /* ---------- تشخیص گوشی ضعیف: حالت سبک خودکار ---------- */
+  setTimeout(function(){
+    var pref="";try{pref=localStorage.getItem("wh_lite")}catch(e){}
+    if(r.classList.contains("lite")||pref==="0")return;
+    var t0=performance.now(),n=0;
+    function f(){n++;if(performance.now()-t0<1500)requestAnimationFrame(f);else if(n/1.5<30){
+      r.classList.add("lite");try{localStorage.setItem("wh_lite","1")}catch(e){}render();
+    }}
+    requestAnimationFrame(f);
+  },1500);
 })();
+
 </script>
 </body>
 </html>
