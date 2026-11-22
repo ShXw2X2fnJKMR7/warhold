@@ -39,7 +39,7 @@ def load_config():
                 if "=" in line and not line.startswith("#"):
                     k, v = line.split("=", 1)
                     cfg[k.strip()] = v.strip()
-    for k in ("BOT_TOKEN", "OWNER_ID", "PORT", "DB_PATH", "SITE_URL", "COC_API_KEY", "COC_API_BASE"):
+    for k in ("BOT_TOKEN", "OWNER_ID", "PORT", "DB_PATH", "SITE_URL", "COC_API_KEY", "COC_API_BASE", "TELEGRAM_RELAY"):
         if os.environ.get(k):
             cfg[k] = os.environ[k]
     return cfg
@@ -54,12 +54,19 @@ SITE_URL = CFG.get("SITE_URL", "")
 COC_KEY = CFG.get("COC_API_KEY", "")
 COC_BASE = CFG.get("COC_API_BASE", "https://api.clashofclans.com/v1")
 UPLOAD_DIR = os.path.join(os.path.dirname(DB_PATH), "uploads")
+ASSET_DIR = os.path.join(os.path.dirname(DB_PATH), "assets")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(ASSET_DIR, exist_ok=True)
 SITE_FILE = os.path.join(BASE, "index.html")
 MAX_CLANS_PER_USER = 3
 SESSION_DAYS = 30
 CODE_SECONDS = 300
 
+TELEGRAM_RELAY = CFG.get("TELEGRAM_RELAY", "").rstrip("/")
+if TELEGRAM_RELAY:
+    # وقتی سرور به تلگرام دسترسی مستقیم نداره، درخواست‌ها از یه رله (مثل Cloudflare Worker) رد می‌شن
+    telebot.apihelper.API_URL = TELEGRAM_RELAY + "/bot{0}/{1}"
+    telebot.apihelper.FILE_URL = TELEGRAM_RELAY + "/file/bot{0}/{1}"
 bot = telebot.TeleBot(BOT_TOKEN or "0:none", parse_mode=None)
 BOT_USERNAME = ""
 DRAW_LOCK = threading.Lock()
@@ -101,8 +108,17 @@ def init_db():
         level INTEGER, members INTEGER, description TEXT, status TEXT, created_at INTEGER);
     CREATE TABLE IF NOT EXISTS listings(id INTEGER PRIMARY KEY AUTOINCREMENT, seller_id INTEGER, tag TEXT, price INTEGER, th INTEGER,
         exp_level INTEGER, heroes TEXT, abilities INTEGER, abilities_max INTEGER, units_percent INTEGER, map_percent INTEGER,
-        description TEXT, photos TEXT, status TEXT, created_at INTEGER);
+        description TEXT, photos TEXT, status TEXT, created_at INTEGER, equipment TEXT);
+    CREATE TABLE IF NOT EXISTS equipment(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, name_fa TEXT, hero TEXT, rarity TEXT);
     """)
+    try:
+        con.execute("ALTER TABLE listings ADD COLUMN equipment TEXT")
+    except sqlite3.OperationalError:
+        pass
+    if con.execute("SELECT COUNT(*) FROM equipment").fetchone()[0] == 0:
+        for hero, items in _EQ.items():
+            for name, rarity in items:
+                con.execute("INSERT OR IGNORE INTO equipment(name,name_fa,hero,rarity) VALUES(?,?,?,?)", (name, "", hero, rarity))
     con.commit()
     con.close()
 
@@ -483,7 +499,33 @@ def review_clan(cid, ok):
 
 
 # ======================= فروشگاه =======================
-HERO_NAMES = ("Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince")
+HERO_NAMES = ("Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince", "Dragon Duke")
+EQ_MAX = {"common": 18, "epic": 27, "legendary": 33}
+# لیست ابلیتی‌های (Hero Equipment) هر هیرو. اگه چیزی کم یا اشتباه بود، همین‌جا اضافه یا اصلاحش کن.
+_EQ = {
+    "Barbarian King": [("Barbarian Puppet", "common"), ("Rage Vial", "common"), ("Earthquake Boots", "epic"), ("Vampstache", "epic"),
+                       ("Giant Gauntlet", "epic"), ("Spiky Ball", "epic"), ("Snake Bracelet", "epic")],
+    "Archer Queen": [("Archer Puppet", "common"), ("Invisibility Vial", "common"), ("Giant Arrow", "epic"), ("Healer Puppet", "epic"),
+                     ("Frozen Arrow", "epic"), ("Magic Mirror", "epic"), ("Action Figure", "epic")],
+    "Grand Warden": [("Eternal Tome", "common"), ("Life Gem", "common"), ("Rage Gem", "epic"), ("Healing Tome", "epic"),
+                     ("Fireball", "epic"), ("Lavaloon Puppet", "epic")],
+    "Royal Champion": [("Royal Gem", "common"), ("Seeking Shield", "common"), ("Hog Rider Puppet", "epic"), ("Haste Vial", "epic"),
+                       ("Rocket Spear", "epic"), ("Electro Boots", "epic")],
+    "Minion Prince": [("Dark Orb", "common"), ("Henchmen Puppet", "epic"), ("Metal Pants", "epic"), ("Noble Iron", "epic"), ("Dark Crown", "epic")],
+}
+
+
+def slug(n):
+    return re.sub(r"[^a-z0-9]+", "-", str(n).lower()).strip("-")
+
+
+def equipment_list():
+    return [{"id": r[0], "name": r[1], "name_fa": r[2] or "", "hero": r[3], "rarity": r[4], "max": EQ_MAX.get(r[4], 18)}
+            for r in q("SELECT id,name,name_fa,hero,rarity FROM equipment ORDER BY id")]
+
+
+def eq_map():
+    return {e["name"]: e for e in equipment_list()}
 
 
 class CocError(Exception):
@@ -506,14 +548,17 @@ def coc_lookup(tag):
                         429: "درخواست زیاده، کمی بعد امتحان کن."}.get(e.code, "خطا از سمت بازی (%d)." % e.code))
     except Exception:
         raise CocError("اتصال به سرور بازی ممکن نشد.")
+    eqs = eq_map()
     home = lambda key: [x for x in data.get(key, []) if x.get("village", "home") == "home"]
     heroes = [{"name": h.get("name"), "level": int(h.get("level", 0)), "max": int(h.get("maxLevel", 0))}
               for h in home("heroes") if h.get("name") in HERO_NAMES]
+    equip = [{"name": e.get("name"), "level": int(e.get("level", 0)), "max": int(e.get("maxLevel", 0))}
+             for e in home("heroEquipment") if e.get("name") in eqs]
     items = home("heroes") + home("troops") + home("spells") + home("heroEquipment")
     cur = sum(int(i.get("level", 0)) for i in items)
     mx = sum(int(i.get("maxLevel", 0)) for i in items)
     return {"tag": tag, "name": data.get("name", ""), "th": int(data.get("townHallLevel", 0)), "exp": int(data.get("expLevel", 0)),
-            "heroes": heroes, "units_percent": round(cur * 100 / mx) if mx else None}
+            "heroes": heroes, "equipment": equip, "units_percent": round(cur * 100 / mx) if mx else None}
 
 
 def decode_photo(s):
@@ -526,42 +571,80 @@ def decode_photo(s):
     return raw if len(raw) <= 450000 and raw[:3] == b"\xff\xd8\xff" else None
 
 
+_DIG = str.maketrans("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩", "01234567890123456789")
+
+
 def int_in(v, lo, hi, optional=False):
-    if optional and (v is None or v == ""):
+    if v is None or (isinstance(v, str) and not v.strip()):
+        if optional:
+            return None
+        raise ValueError
+    s = re.sub(r"[,\s٬،]", "", str(v).translate(_DIG))
+    if not re.fullmatch(r"\d{1,12}", s):
+        raise ValueError
+    n = int(s)
+    if not lo <= n <= hi:
+        raise ValueError
+    return n
+
+
+def norm_tag_loose(text):
+    if not isinstance(text, str):
         return None
-    try:
-        v = int(v)
-    except (TypeError, ValueError):
-        raise ValueError
-    if not lo <= v <= hi:
-        raise ValueError
-    return v
+    t = text.strip().upper().replace("O", "0").lstrip("#")
+    return "#" + t if re.fullmatch(r"[0-9A-Z]{3,15}", t) else None
 
 
 def add_listing(uid, d):
     u = q("SELECT username FROM users WHERE tg_id=?", (uid,), "one")
     if not u or not u[0]:
         return False, "برای فروش باید تو تلگرام یوزرنیم داشته باشی (Settings > Username) و بعد یک بار ربات رو /start کنی."
+    tag = norm_tag_loose(d.get("tag"))
+    if not tag:
+        return False, "تگ اکانت معتبر نیست (فقط حرف و عدد انگلیسی، مثل #2PP0LQ8)."
     try:
-        tag = norm_tag(d.get("tag"))
         price = int_in(d.get("price"), 1000, 5000000000)
+    except ValueError:
+        return False, "قیمت باید فقط عدد باشه (مثلاً 2500000) و حداقل ۱۰۰۰ تومان."
+    try:
         th = int_in(d.get("th"), 1, 25)
+    except ValueError:
+        return False, "لول تاون‌هال باید عدد بین ۱ تا ۲۵ باشه."
+    try:
         exp = int_in(d.get("exp_level"), 1, 500, True)
-        ab = int_in(d.get("abilities"), 0, 100, True) or 0
-        abm = int_in(d.get("abilities_max"), 0, 100, True) or 0
+    except ValueError:
+        return False, "لول اکانت باید عدد بین ۱ تا ۵۰۰ باشه (یا خالی بذار)."
+    try:
         up = int_in(d.get("units_percent"), 0, 100, True)
         mp = int_in(d.get("map_percent"), 0, 100, True)
-        heroes = []
+    except ValueError:
+        return False, "درصد مکس باید عدد بین ۰ تا ۱۰۰ باشه (یا خالی بذار)."
+    heroes = []
+    try:
         for h in d.get("heroes") or []:
-            lvl = int_in(h.get("level"), 0, 100)
+            lvl = int_in(h.get("level"), 0, 100, True) or 0
             if h.get("name") in HERO_NAMES and lvl > 0:
                 heroes.append({"name": h["name"], "level": lvl, "max": int_in(h.get("max"), 0, 100, True) or 0})
-        desc = clean(d.get("description") or "", 0, 400)
-        photos = d.get("photos") or []
-        if not tag or desc is None or ab > abm and abm or not isinstance(photos, list) or not 1 <= len(photos) <= 4:
-            raise ValueError
     except (ValueError, AttributeError, TypeError):
-        return False, "اطلاعات آگهی ناقصه یا اشتباهه (تگ، قیمت، لول تاون‌هال و ۱ تا ۴ عکس لازمه)."
+        return False, "لول هیروها باید عدد بین ۰ تا ۱۰۰ باشه."
+    equip = []
+    eqs = eq_map()
+    try:
+        for e in d.get("equipment") or []:
+            info = eqs.get(e.get("name"))
+            lvl = int_in(e.get("level"), 0, 99, True) or 0
+            if info and lvl > 0:
+                if lvl > info["max"]:
+                    return False, "لول %s نباید از %d بیشتر باشه." % (info["name"], info["max"])
+                equip.append({"name": info["name"], "level": lvl, "max": info["max"]})
+    except (ValueError, AttributeError, TypeError):
+        return False, "لول ابلیتی‌ها باید عدد باشه."
+    desc = clean(d.get("description") or "", 0, 400)
+    if desc is None:
+        return False, "توضیحات حداکثر ۴۰۰ حرف باشه."
+    photos = d.get("photos")
+    if not isinstance(photos, list) or not 1 <= len(photos) <= 4:
+        return False, "حداقل ۱ و حداکثر ۴ عکس لازمه."
     raws = [decode_photo(p) for p in photos]
     if not all(raws):
         return False, "یکی از عکس‌ها معتبر نیست یا زیادی بزرگه."
@@ -569,9 +652,11 @@ def add_listing(uid, d):
         return False, "برای این تگ قبلاً آگهی ثبت شده است."
     if q("SELECT COUNT(*) FROM listings WHERE seller_id=? AND status IN ('pending','approved')", (uid,), "one")[0] >= 10:
         return False, "حداکثر ۱۰ آگهی فعال می‌تونی داشته باشی."
+    owned = len(equip)
+    maxed = sum(1 for e in equip if e["level"] >= e["max"])
     lid = q("INSERT INTO listings(seller_id,tag,price,th,exp_level,heroes,abilities,abilities_max,units_percent,map_percent,"
-            "description,photos,status,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-            (uid, tag, price, th, exp, json.dumps(heroes), ab, abm, up, mp, desc, "[]", "pending", now()), "id", True)
+            "description,photos,status,created_at,equipment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (uid, tag, price, th, exp, json.dumps(heroes), owned, maxed, up, mp, desc, "[]", "pending", now(), json.dumps(equip)), "id", True)
     names = []
     for i, raw in enumerate(raws):
         fn = "l%d_%d.jpg" % (lid, i)
@@ -585,6 +670,104 @@ def add_listing(uid, d):
     notify_staff("🛒 آگهی جدید #%d\nتگ: %s | TH%d | قیمت: %s تومان\nفروشنده: %s\n(عکس‌ها و جزئیات تو پنل سایت)" %
                  (lid, tag, th, format(price, ","), who(uid)), kb)
     return True, "آگهی ثبت شد و بعد از تأیید ادمین تو فروشگاه میاد."
+
+
+# ======================= تصاویر (آپلود از پنل) =======================
+def valid_asset_key(key):
+    if not isinstance(key, str):
+        return False
+    if re.fullmatch(r"th-\d{1,2}", key):
+        return 1 <= int(key[3:]) <= 25
+    if key.startswith("hero-"):
+        return key[5:] in {slug(h) for h in HERO_NAMES}
+    m = re.fullmatch(r"eq-([a-z0-9-]+)-(\d{1,2})", key)
+    if m:
+        for e in equipment_list():
+            if slug(e["name"]) == m.group(1):
+                return 1 <= int(m.group(2)) <= e["max"]
+    return False
+
+
+def image_ext(raw):
+    if raw[:8] == b"\x89PNG\r\n\x1a\n":
+        return "png"
+    if raw[:3] == b"\xff\xd8\xff":
+        return "jpg"
+    if raw[:4] == b"RIFF" and raw[8:12] == b"WEBP":
+        return "webp"
+    return None
+
+
+def find_asset(key):
+    for ext in ("png", "webp", "jpg"):
+        fp = os.path.join(ASSET_DIR, key + "." + ext)
+        if os.path.isfile(fp):
+            return fp, ext
+    return None, None
+
+
+def remove_asset_files(key):
+    for ext in ("png", "webp", "jpg"):
+        try:
+            os.remove(os.path.join(ASSET_DIR, key + "." + ext))
+        except OSError:
+            pass
+
+
+def bump_assets():
+    set_setting("asset_v", int(get_setting("asset_v", "0")) + 1)
+
+
+def upload_asset(key, data_url):
+    if not valid_asset_key(key):
+        return False, "کلید تصویر نامعتبره (هیرو، لول تاون‌هال یا لول ابلیتی وجود نداره)."
+    m = re.fullmatch(r"data:image/(?:png|jpeg|webp);base64,([A-Za-z0-9+/=]+)", data_url if isinstance(data_url, str) else "")
+    if not m:
+        return False, "فقط فایل PNG، JPG یا WEBP قبوله."
+    try:
+        raw = base64.b64decode(m.group(1), validate=True)
+    except Exception:
+        return False, "فایل خراب بود."
+    ext = image_ext(raw)
+    if not ext or len(raw) > 1500000:
+        return False, "فایل تصویر معتبر نیست یا بزرگ‌تر از ۱.۵ مگابایته."
+    remove_asset_files(key)
+    with open(os.path.join(ASSET_DIR, key + "." + ext), "wb") as f:
+        f.write(raw)
+    bump_assets()
+    return True, "تصویر ذخیره شد."
+
+
+def add_equipment(d):
+    hero, rarity = d.get("hero"), d.get("rarity")
+    name = clean(d.get("name_en"), 2, 40)
+    fa = clean(d.get("name_fa") or "", 0, 40)
+    if hero not in HERO_NAMES or rarity not in EQ_MAX:
+        return False, "هیرو یا نوع ابلیتی نامعتبره."
+    if not name or not re.fullmatch(r"[A-Za-z0-9 '\-]+", name) or not slug(name):
+        return False, "اسم انگلیسی فقط حرف و عدد انگلیسی باشه."
+    if fa is None:
+        return False, "اسم فارسی بیش از حد طولانیه."
+    if any(slug(e["name"]) == slug(name) for e in equipment_list()):
+        return False, "ابلیتی با این اسم قبلاً هست."
+    q("INSERT INTO equipment(name,name_fa,hero,rarity) VALUES(?,?,?,?)", (name, fa, hero, rarity), None, True)
+    return True, "ابلیتی اضافه شد."
+
+
+def del_equipment(eid):
+    row = q("SELECT name FROM equipment WHERE id=?", (eid,), "one")
+    if not row:
+        return False, "پیدا نشد."
+    base = "eq-" + slug(row[0]) + "-"
+    for fn in os.listdir(ASSET_DIR):
+        if fn.startswith(base):
+            try:
+                os.remove(os.path.join(ASSET_DIR, fn))
+            except OSError:
+                pass
+    q("DELETE FROM equipment WHERE id=?", (eid,), None, True)
+    bump_assets()
+    return True, "حذف شد."
 
 
 def delete_listing(lid):
@@ -616,11 +799,12 @@ def review_listing(lid, ok):
 def listing_dict(r):
     return {"id": r[0], "tag": r[1], "price": r[2], "th": r[3], "exp_level": r[4], "heroes": json.loads(r[5] or "[]"),
             "abilities": r[6], "abilities_max": r[7], "units_percent": r[8], "map_percent": r[9], "description": r[10],
-            "photos": ["/uploads/" + os.path.basename(f) for f in json.loads(r[11] or "[]")], "seller": r[12] or "", "status": r[13]}
+            "photos": ["/uploads/" + os.path.basename(f) for f in json.loads(r[11] or "[]")], "seller": r[12] or "", "status": r[13],
+            "equipment": json.loads(r[14] or "[]")}
 
 
 LISTING_COLS = ("l.id,l.tag,l.price,l.th,l.exp_level,l.heroes,l.abilities,l.abilities_max,l.units_percent,l.map_percent,"
-                "l.description,l.photos,u.username,l.status")
+                "l.description,l.photos,u.username,l.status,l.equipment")
 
 
 def clans_public():
@@ -652,7 +836,8 @@ def listing_action(uid, d):
 
 # ======================= داده‌های API =======================
 def state_payload():
-    return {"bot": BOT_USERNAME, "tournaments": tours_list(), "coc": bool(COC_KEY)}
+    return {"bot": BOT_USERNAME, "tournaments": tours_list(), "coc": bool(COC_KEY), "heroes": list(HERO_NAMES), "equipment": equipment_list(),
+            "av": int(get_setting("asset_v", "0"))}
 
 
 def me_payload(uid):
@@ -725,6 +910,21 @@ def admin_action(uid, d):
         q("DELETE FROM clans WHERE id=?", (tid,), None, True)
     elif act == "del_listing":
         delete_listing(tid)
+    elif act == "add_equipment":
+        return add_equipment(d)
+    elif act == "del_equipment":
+        return del_equipment(tid)
+    elif act == "set_equip_fa":
+        fa = clean(d.get("name_fa") or "", 0, 40)
+        if fa is None:
+            return False, "اسم فارسی نامعتبره."
+        q("UPDATE equipment SET name_fa=? WHERE id=?", (fa, tid), None, True)
+    elif act == "del_asset":
+        key = d.get("key")
+        if not valid_asset_key(key):
+            return False, "کلید نامعتبره."
+        remove_asset_files(key)
+        bump_assets()
     elif act == "add_admin":
         q("INSERT OR IGNORE INTO admins(tg_id) VALUES(?)", (tid,), None, True)
     elif act == "rm_admin":
@@ -802,6 +1002,15 @@ class Handler(BaseHTTPRequestHandler):
                     return self.err(404, "پیدا نشد.")
                 with open(fp, "rb") as f:
                     return self.send(200, raw=f.read(), ctype="image/jpeg", cache="public, max-age=86400")
+            m = re.fullmatch(r"/assets/([a-z0-9-]+)", path)
+            if m:
+                fp, ext = find_asset(m.group(1))
+                if not fp:
+                    return self.err(404, "پیدا نشد.")
+                ct = {"png": "image/png", "jpg": "image/jpeg", "webp": "image/webp"}[ext]
+                with open(fp, "rb") as f:
+                    return self.send(200, raw=f.read(), ctype=ct,
+                                     cache="public, max-age=31536000, immutable" if "v=" in url.query else "public, max-age=300")
             if path == "/api/state":
                 return self.send(200, state_payload())
             if path == "/api/tournament":
@@ -814,6 +1023,10 @@ class Handler(BaseHTTPRequestHandler):
             uid = self.user()
             if path == "/api/me":
                 return self.send(200, me_payload(uid)) if uid else self.err(401, "وارد نشده‌اید.")
+            if path == "/api/admin/assets":
+                if not uid or not is_owner(uid):
+                    return self.err(403, "فقط مالک.")
+                return self.send(200, {"keys": sorted(fn.rsplit(".", 1)[0] for fn in os.listdir(ASSET_DIR))})
             if path in ("/api/admin/overview", "/api/admin/registrants"):
                 if not uid or not is_staff(uid):
                     return self.err(403, "دسترسی ندارید.")
@@ -829,7 +1042,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         try:
             path = self.path.split("?")[0]
-            d = self.json_body(3000000 if path == "/api/listings" else 20000)
+            d = self.json_body(3000000 if path in ("/api/listings", "/api/admin/asset") else 20000)
             if d is None or not isinstance(d, dict):
                 return self.err(400, "درخواست نامعتبر یا زیادی بزرگ.")
             if path == "/api/login":
@@ -871,6 +1084,10 @@ class Handler(BaseHTTPRequestHandler):
                 return ok_msg(add_listing(uid, d))
             if path == "/api/listing-action":
                 return ok_msg(listing_action(uid, d))
+            if path == "/api/admin/asset":
+                if not is_owner(uid):
+                    return self.err(403, "فقط مالک.")
+                return ok_msg(upload_asset(d.get("key"), d.get("data")))
             if path == "/api/admin/action":
                 if not is_staff(uid):
                     return self.err(403, "دسترسی ندارید.")
@@ -1149,6 +1366,8 @@ if __name__ == "__main__":
         print("BOT_TOKEN خالیه؛ فقط وب‌سایت بالا میاد و ربات خاموشه.")
     if not OWNER_ID:
         print("OWNER_ID خالیه؛ هیچ‌کس مالک نیست.")
+    if TELEGRAM_RELAY:
+        print("ربات از طریق رله به تلگرام وصل می‌شه.")
     if not COC_KEY:
         print("COC_API_KEY خالیه؛ دریافت خودکار مشخصات اکانت غیرفعاله (فروشنده‌ها دستی وارد می‌کنن).")
     print("سرور روی پورت %d بالا اومد..." % PORT)
