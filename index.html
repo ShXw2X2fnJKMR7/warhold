@@ -320,6 +320,11 @@ html.lite .hpin::after{display:none}
 .thpick.wrap{flex-wrap:wrap;overflow:visible}
 .thbtn small{display:block;font-size:11px;line-height:1}
 .chip.on{background:linear-gradient(180deg,#ffe98f,#f2a900);color:#3d2300}
+.crow{display:flex;gap:6px;margin:4px 0;align-items:center}
+.crow .in{margin:0}
+.crow .cn{flex:2;min-width:0}
+.crow .cl{flex:1;min-width:56px}
+.cust{margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -490,6 +495,7 @@ html.lite .hpin::after{display:none}
   panelBtn:"Admin panel",roleOwner:"Owner",roleAdmin:"Admin",roleUser:"User",myRegs:"My registrations",myListings:"My listings"});
   Object.assign(fa,{"step1": "مشخصات اکانت", "step2": "ابلیتی‌ها", "nextBtn": "بعدی: ابلیتی‌ها ←", "prevBtn": "→ قبلی", "errTag": "تگ اکانت معتبر نیست (فقط حرف و عدد انگلیسی، مثل #2PP0LQ8).", "errPrice": "قیمت رو فقط با عدد بنویس (مثلاً 2500000).", "errTh": "لول تاون‌هال رو انتخاب کن (عدد ۱ تا ۲۵).", "errPhoto": "حداقل یک عکس از اکانت اضافه کن.", "photoFail": "یکی از عکس‌ها خونده نشد؛ عکس دیگه‌ای امتحان کن.", "eqHint": "لول هر ابلیتی رو بنویس. اگه اکانت اون ابلیتی رو نداره، خالی بذار.", "epicL": "اپیک", "commonL": "معمولی", "maxedL": "مکس", "manualNote": "مشخصات رو دستی وارد کن.", "hero_Dragon_Duke": "دوک اژدها", "abilL": "ابلیتی‌ها"});Object.assign(en,{"step1": "Account details", "step2": "Abilities", "nextBtn": "Next: abilities →", "prevBtn": "← Back", "errTag": "Invalid account tag (letters and digits only, e.g. #2PP0LQ8).", "errPrice": "Enter the price using digits only (e.g. 2500000).", "errTh": "Pick the Town Hall level (1 to 25).", "errPhoto": "Add at least one photo of the account.", "photoFail": "One of the photos could not be read; try another.", "eqHint": "Enter the level of each ability. Leave it empty if the account does not have it.", "epicL": "Epic", "commonL": "Common", "maxedL": "maxed", "manualNote": "Enter the details manually.", "hero_Dragon_Duke": "Dragon Duke", "abilL": "Abilities"});
   Object.assign(fa,{"legL": "لجندری", "aTh": "تصویر تاون‌هال‌ها", "aThHint": "روی هر لول بزن و PNG بذار. یا با «آپلود گروهی» چند فایل رو یکجا انتخاب کن (عدد اسم فایل، مثل 16.png، لول رو مشخص می‌کنه).", "aBulk": "آپلود گروهی", "aHeroes": "هیروها و تجهیزات", "aHeroImg": "تصویر هیرو (PNG):", "aUpload": "آپلود", "aReplace": "جایگزینی", "aAddEq": "افزودن ابلیتی", "aNameEn": "اسم انگلیسی (مثل Giant Gauntlet)", "aNameFa": "اسم فارسی", "aAdd": "افزودن", "aLevels": "لول‌ها / ویرایش"});Object.assign(en,{"legL": "Legendary", "aTh": "تصویر تاون‌هال‌ها", "aThHint": "روی هر لول بزن و PNG بذار. یا با «آپلود گروهی» چند فایل رو یکجا انتخاب کن (عدد اسم فایل، مثل 16.png، لول رو مشخص می‌کنه).", "aBulk": "آپلود گروهی", "aHeroes": "هیروها و تجهیزات", "aHeroImg": "تصویر هیرو (PNG):", "aUpload": "آپلود", "aReplace": "جایگزینی", "aAddEq": "افزودن ابلیتی", "aNameEn": "اسم انگلیسی (مثل Giant Gauntlet)", "aNameFa": "اسم فارسی", "aAdd": "افزودن", "aLevels": "لول‌ها / ویرایش"});
+  Object.assign(fa,{"addCust": "افزودن ابلیتی دیگر", "custName": "اسم ابلیتی (انگلیسی)", "custLvl": "لول"});Object.assign(en,{"addCust": "Add another ability", "custName": "Ability name", "custLvl": "Level"});
   function $(i){return document.getElementById(i)}
   var r=document.documentElement,L="fa",API=(window.WARHOLD_API||""),TOKEN="",ST=null,ME=null,TD=null,STORE=null,CLANS=null,OVER=null,ROUTE="tournaments",CUR=0;
   var LFILTER="",showAll=false,PHOTOS=[],LKMAX={},sellKey="",ctx=null,LIVEON=false,ASSETS={},HOPEN="",EOPEN=0,ADDR="",PICK=null;
@@ -736,13 +742,13 @@ html.lite .hpin::after{display:none}
     if(l.map_percent!=null)h+=kv(d.mapL,esc(num(l.map_percent))+'٪');
     var hm={},em={};
     l.heroes.forEach(function(x){hm[x.name]=x});
-    (l.equipment||[]).forEach(function(x){var inf=eqInfo(x.name);(em[inf.hero]=em[inf.hero]||[]).push({x:x,inf:inf})});
+    (l.equipment||[]).forEach(function(x){var inf=eqInfo(x.name),hh=x.hero||inf.hero;(em[hh]=em[hh]||[]).push({x:x,inf:inf})});
     var names=PORDER.concat(heroList().filter(function(n){return PORDER.indexOf(n)<0})).filter(function(n){return hm[n]||em[n]});
     if(names.length)h+='<h3 class="sub">'+esc(d.heroesL)+' · '+esc(d.abilL)+' ('+esc(num(l.abilities))+' · '+esc(d.maxedL)+' '+esc(num(l.abilities_max))+')</h3>';
     names.forEach(function(n){
       var x=hm[n],eqs=(em[n]||[]).sort(function(a,b){return (RARORD[a.inf.rarity]||0)-(RARORD[b.inf.rarity]||0)});
       h+='<div class="hpanel"><div class="hpin hp-'+slug(n)+'"><div class="hphead">'+heroIcon(n,"big")+'<div class="hpt"><b>'+esc(hname(n))+'</b>'+(x?'<span class="hplv">'+esc(num(x.level))+(x.max?' / '+esc(num(x.max)):'')+'</span>':'')+'</div></div>'+
-        (eqs.length?'<div class="hpeq">'+eqs.map(function(o){return '<div class="hpe '+o.inf.rarity+'">'+eqIcon(o.inf,"md",o.x.level)+'<div class="nm">'+esc(eqName(o.inf))+'<small><b>'+esc(num(o.x.level))+'</b> / '+esc(num(o.x.max||o.inf.max))+'</small></div></div>'}).join("")+'</div>':'')+
+        (eqs.length?'<div class="hpeq">'+eqs.map(function(o){return '<div class="hpe '+o.inf.rarity+'">'+eqIcon(o.inf,"md",o.x.level)+'<div class="nm">'+esc(eqName(o.inf))+'<small><b>'+esc(num(o.x.level))+'</b>'+((o.x.custom||!(o.x.max||o.inf.max))?'':' / '+esc(num(o.x.max||o.inf.max)))+'</small></div></div>'}).join("")+'</div>':'')+
         '</div></div>';
     });
     if(l.description)h+='<p class="note">'+esc(l.description)+'</p>';
@@ -773,29 +779,29 @@ html.lite .hpin::after{display:none}
       '<label class="lbl" for="s_th">'+esc(d.fTh)+'</label><div class="thpick">';
     for(var t=1;t<=19;t++)h+='<button class="thbtn" type="button" data-th="'+t+'">'+thIcon(t,"sm")+'</button>';
     h+='</div><div class="heroR"><input class="in" id="s_th" inputmode="numeric" dir="ltr" maxlength="2" style="width:90px"><span id="thPrev"></span></div>'+
-      '<label class="lbl" for="s_exp">'+esc(d.fExp)+'</label><input class="in" id="s_exp" inputmode="numeric" dir="ltr" maxlength="3"><h3 class="sub">'+esc(d.heroesL)+'</h3><div class="hgrid">';
-    H.forEach(function(n,i){h+='<div class="hbox">'+heroIcon(n,"sm")+'<input class="in" id="s_h'+i+'" inputmode="numeric" dir="ltr" maxlength="3" placeholder="'+esc(hname(n))+'" aria-label="'+esc(hname(n))+'"></div>'});
-    h+='</div><div class="hgrid"><div><label class="lbl" for="s_up">'+esc(d.fUnits)+'</label><input class="in" id="s_up" inputmode="numeric" dir="ltr" maxlength="3"></div>'+
-      '<div><label class="lbl" for="s_mp">'+esc(d.fMap)+'</label><input class="in" id="s_mp" inputmode="numeric" dir="ltr" maxlength="3"></div></div>'+
+      '<label class="lbl" for="s_exp">'+esc(d.fExp)+'</label><input class="in" id="s_exp" inputmode="numeric" dir="ltr" maxlength="5"><h3 class="sub">'+esc(d.heroesL)+'</h3><div class="hgrid">';
+    H.forEach(function(n,i){h+='<div class="hbox">'+heroIcon(n,"sm")+'<input class="in" id="s_h'+i+'" inputmode="numeric" dir="ltr" maxlength="5" placeholder="'+esc(hname(n))+'" aria-label="'+esc(hname(n))+'"></div>'});
+    h+='</div><div class="hgrid"><div><label class="lbl" for="s_up">'+esc(d.fUnits)+'</label><input class="in" id="s_up" inputmode="numeric" dir="ltr" maxlength="4"></div>'+
+      '<div><label class="lbl" for="s_mp">'+esc(d.fMap)+'</label><input class="in" id="s_mp" inputmode="numeric" dir="ltr" maxlength="4"></div></div>'+
       '<label class="lbl" for="s_desc">'+esc(d.fDesc)+'</label><input class="in" id="s_desc" maxlength="400" autocomplete="off">'+
       '<label class="lbl" for="s_photos">'+esc(d.fPhotos)+'</label><input class="in" id="s_photos" type="file" accept="image/*" multiple><div class="thumbs" id="thumbs"></div>'+
       '<button class="btn" data-sell="next" type="button">'+esc(d.nextBtn)+'</button><p class="msg err" id="sellMsg"></p></div><div id="sell2" hidden><p class="note">'+esc(d.eqHint)+'</p>';
     H.forEach(function(hn){
       var items=EQ.filter(function(e){return e.hero===hn});
-      if(!items.length)return;
-      h+='<h3 class="sub heroR">'+heroIcon(hn,"sm")+'<span>'+esc(hname(hn))+'</span></h3><div class="eqgrid">'+items.map(function(e){
+      h+='<h3 class="sub heroR">'+heroIcon(hn,"sm")+'<span>'+esc(hname(hn))+'</span></h3>';
+      if(items.length)h+='<div class="eqgrid">'+items.map(function(e){
         return '<div class="eqi '+e.rarity+'">'+eqIcon(e,"sm")+'<div class="nm">'+esc(eqName(e))+'<small>'+esc(d[RARK[e.rarity]||"commonL"])+' · '+esc(num(e.max))+'</small></div>'+
-          '<input class="in" id="q_'+slug(e.name)+'" inputmode="numeric" dir="ltr" maxlength="2" placeholder="0" aria-label="'+esc(e.name)+'"></div>'}).join("")+'</div>';
+          '<input class="in" id="q_'+slug(e.name)+'" inputmode="numeric" dir="ltr" maxlength="5" placeholder="0" aria-label="'+esc(e.name)+'"></div>'}).join("")+'</div>';
+      h+='<div class="cust" id="cu_'+slug(hn)+'"></div><button class="chip" data-sell="addcust" data-h="'+esc(hn)+'" type="button">+ '+esc(d.addCust)+'</button>';
     });
     h+='<div class="seg"><button class="chip" data-sell="prev" type="button">'+esc(d.prevBtn)+'</button><button class="btn" data-sell="go" type="button">'+esc(d.sellGo)+'</button></div><p class="msg err" id="sellMsg2"></p><p class="note">'+esc(d.sellNote)+'</p></div>';
     el.innerHTML=h;PHOTOS=[];LKMAX={};
   }
   function step1Err(){
     var d=D();
-    if(!/^#?[0-9A-Za-z]{3,15}$/.test(val("s_tag")))return d.errTag;
-    if(!/^\d{4,10}$/.test(nd(val("s_price"))))return d.errPrice;
-    var t=nd(val("s_th"));if(!/^\d{1,2}$/.test(t)||+t<1||+t>25)return d.errTh;
-    if(!PHOTOS.length)return d.errPhoto;
+    if(!/^#?[0-9A-Za-z]{2,20}$/.test(val("s_tag")))return d.errTag;
+    if(!/^\d+$/.test(nd(val("s_price"))))return d.errPrice;
+    var t=nd(val("s_th"));if(!/^\d{1,2}$/.test(t)||+t<1)return d.errTh;
     return "";
   }
   function renderAccount(){
@@ -1033,11 +1039,19 @@ html.lite .hpin::after{display:none}
       },function(er){flash("fetchMsg",errMsg(er),false)});
       return;
     }
+    if(act==="addcust"){
+      var cb=$("cu_"+slug(b.dataset.h)),row=document.createElement("div");
+      row.className="crow";row.dataset.h=b.dataset.h;
+      row.innerHTML='<input class="in cn" maxlength="40" dir="ltr" placeholder="'+esc(d.custName)+'"><input class="in cl" inputmode="numeric" maxlength="5" dir="ltr" placeholder="'+esc(d.custLvl)+'"><button class="chip" type="button" data-sell="delcust">×</button>';
+      cb.appendChild(row);return;
+    }
+    if(act==="delcust"){var cr=b.closest(".crow");if(cr)cr.remove();return}
     if(act==="next"){var er=step1Err();if(er){flash("sellMsg",er,false);return}showStep(2);return}
     if(act==="prev"){showStep(1);return}
     var heroes=[],equipment=[];
     heroList().forEach(function(n,i){var v=nd(val("s_h"+i));if(v)heroes.push({name:n,level:v,max:LKMAX[n]||0})});
     (ST.equipment||[]).forEach(function(q){var v=nd(val("q_"+slug(q.name)));if(v)equipment.push({name:q.name,level:v})});
+    document.querySelectorAll("#sell2 .crow").forEach(function(r){var n=r.querySelector(".cn").value.trim(),v=nd(r.querySelector(".cl").value);if(n&&v)equipment.push({name:n,level:v,hero:r.dataset.h,custom:true})});
     api("/api/listings",{tag:val("s_tag"),price:nd(val("s_price")),th:nd(val("s_th")),exp_level:nd(val("s_exp")),heroes:heroes,equipment:equipment,
       units_percent:nd(val("s_up")),map_percent:nd(val("s_mp")),description:val("s_desc"),photos:PHOTOS}).then(function(){
         sellKey="";go("account")},function(er2){flash("sellMsg2",errMsg(er2),false)});

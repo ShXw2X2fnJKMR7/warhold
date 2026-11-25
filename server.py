@@ -592,7 +592,7 @@ def norm_tag_loose(text):
     if not isinstance(text, str):
         return None
     t = text.strip().upper().replace("O", "0").lstrip("#")
-    return "#" + t if re.fullmatch(r"[0-9A-Z]{3,15}", t) else None
+    return "#" + t if re.fullmatch(r"[0-9A-Z]{2,20}", t) else None
 
 
 def add_listing(uid, d):
@@ -603,57 +603,61 @@ def add_listing(uid, d):
     if not tag:
         return False, "تگ اکانت معتبر نیست (فقط حرف و عدد انگلیسی، مثل #2PP0LQ8)."
     try:
-        price = int_in(d.get("price"), 1000, 5000000000)
+        price = int_in(d.get("price"), 1, 10 ** 12)
     except ValueError:
-        return False, "قیمت باید فقط عدد باشه (مثلاً 2500000) و حداقل ۱۰۰۰ تومان."
+        return False, "قیمت باید فقط عدد باشه (مثلاً 2500000)."
     try:
-        th = int_in(d.get("th"), 1, 25)
+        th = int_in(d.get("th"), 1, 99)
     except ValueError:
-        return False, "لول تاون‌هال باید عدد بین ۱ تا ۲۵ باشه."
+        return False, "لول تاون‌هال باید عدد باشه."
     try:
-        exp = int_in(d.get("exp_level"), 1, 500, True)
+        exp = int_in(d.get("exp_level"), 0, 99999, True)
     except ValueError:
-        return False, "لول اکانت باید عدد بین ۱ تا ۵۰۰ باشه (یا خالی بذار)."
+        return False, "لول اکانت باید عدد باشه (یا خالی بذار)."
     try:
-        up = int_in(d.get("units_percent"), 0, 100, True)
-        mp = int_in(d.get("map_percent"), 0, 100, True)
+        up = int_in(d.get("units_percent"), 0, 9999, True)
+        mp = int_in(d.get("map_percent"), 0, 9999, True)
     except ValueError:
-        return False, "درصد مکس باید عدد بین ۰ تا ۱۰۰ باشه (یا خالی بذار)."
+        return False, "درصد مکس باید عدد باشه (یا خالی بذار)."
     heroes = []
     try:
         for h in d.get("heroes") or []:
-            lvl = int_in(h.get("level"), 0, 100, True) or 0
+            lvl = int_in(h.get("level"), 0, 99999, True) or 0
             if h.get("name") in HERO_NAMES and lvl > 0:
-                heroes.append({"name": h["name"], "level": lvl, "max": int_in(h.get("max"), 0, 100, True) or 0})
+                heroes.append({"name": h["name"], "level": lvl, "max": int_in(h.get("max"), 0, 99999, True) or 0})
     except (ValueError, AttributeError, TypeError):
-        return False, "لول هیروها باید عدد بین ۰ تا ۱۰۰ باشه."
+        return False, "لول هیروها باید عدد باشه."
     equip = []
     eqs = eq_map()
     try:
         for e in d.get("equipment") or []:
+            lvl = int_in(e.get("level"), 0, 99999, True) or 0
+            if lvl <= 0:
+                continue
             info = eqs.get(e.get("name"))
-            lvl = int_in(e.get("level"), 0, 99, True) or 0
-            if info and lvl > 0:
-                if lvl > info["max"]:
-                    return False, "لول %s نباید از %d بیشتر باشه." % (info["name"], info["max"])
+            if info:
                 equip.append({"name": info["name"], "level": lvl, "max": info["max"]})
+            elif e.get("hero") in HERO_NAMES:
+                nm = clean(e.get("name"), 2, 40)
+                if nm:
+                    equip.append({"name": nm, "level": lvl, "max": 0, "hero": e["hero"], "custom": True})
     except (ValueError, AttributeError, TypeError):
         return False, "لول ابلیتی‌ها باید عدد باشه."
-    desc = clean(d.get("description") or "", 0, 400)
+    desc = clean(d.get("description") or "", 0, 3000)
     if desc is None:
-        return False, "توضیحات حداکثر ۴۰۰ حرف باشه."
-    photos = d.get("photos")
-    if not isinstance(photos, list) or not 1 <= len(photos) <= 4:
-        return False, "حداقل ۱ و حداکثر ۴ عکس لازمه."
+        return False, "توضیحات زیادی طولانیه."
+    photos = d.get("photos") or []
+    if not isinstance(photos, list) or len(photos) > 8:
+        return False, "حداکثر ۸ عکس می‌شه گذاشت."
     raws = [decode_photo(p) for p in photos]
     if not all(raws):
         return False, "یکی از عکس‌ها معتبر نیست یا زیادی بزرگه."
     if q("SELECT 1 FROM listings WHERE tag=? AND status IN ('pending','approved')", (tag,), "one"):
         return False, "برای این تگ قبلاً آگهی ثبت شده است."
-    if q("SELECT COUNT(*) FROM listings WHERE seller_id=? AND status IN ('pending','approved')", (uid,), "one")[0] >= 10:
-        return False, "حداکثر ۱۰ آگهی فعال می‌تونی داشته باشی."
+    if q("SELECT COUNT(*) FROM listings WHERE seller_id=? AND status IN ('pending','approved')", (uid,), "one")[0] >= 50:
+        return False, "حداکثر ۵۰ آگهی فعال می‌تونی داشته باشی."
     owned = len(equip)
-    maxed = sum(1 for e in equip if e["level"] >= e["max"])
+    maxed = sum(1 for e in equip if e["max"] and e["level"] >= e["max"])
     lid = q("INSERT INTO listings(seller_id,tag,price,th,exp_level,heroes,abilities,abilities_max,units_percent,map_percent,"
             "description,photos,status,created_at,equipment) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (uid, tag, price, th, exp, json.dumps(heroes), owned, maxed, up, mp, desc, "[]", "pending", now(), json.dumps(equip)), "id", True)
